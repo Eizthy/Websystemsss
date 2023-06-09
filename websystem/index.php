@@ -9,8 +9,8 @@
   <!-- 
     - primary meta tag
   -->
-  <title>EduWeb - The Best Program to Enroll for Exchange</title>
-  <!-- <meta name="title" content="EduWeb - The Best Program to Enroll for Exchange">
+  <title>LearnOpia - The Best Program to Enroll for Exchange</title>
+  <!-- <meta name="title" content="LearnOpia - The Best Program to Enroll for Exchange">
   <meta name="description" content="This is an education html template made by codewithsadee"> -->
 
   <!-- 
@@ -95,12 +95,6 @@
           <ion-icon name="search-outline" aria-hidden="true"></ion-icon>
         </button>
 
-        <button class="header-action-btn" aria-label="cart" title="Cart">
-          <ion-icon name="cart-outline" aria-hidden="true"></ion-icon>
-
-          <span class="btn-badge">0</span>
-        </button>
-
         <a href="index1.php" class="btn has-before">
           <span class="span">Try for free</span>
 
@@ -136,11 +130,11 @@
           <div class="hero-content">
 
             <h1 class="h1 section-title">
-              The Best Program to <span class="span">Enroll</span> for Exchange
+            Explore a World of Knowledge with <span class="span">LearnOpia</span>
             </h1>
 
             <p class="hero-text">
-              Excepteur sint occaecat cupidatat non proident sunt in culpa qui officia deserunt mollit.
+            Welcome to LearnOpia, the ultimate destination for lifelong learners! Whether you're a student, professional, or simply curious, LearnOpia offers a diverse collection of courses, resources, and interactive tools to enhance your learning experience. 
             </p>
 
             <a href="#courses" class="btn has-before">
@@ -188,7 +182,7 @@
           </h2>
 
           <p class="section-text">
-            Consectetur adipiscing elit sed do eiusmod tempor.
+          Discover the future of education with our innovative online degree programs. 
           </p>
 
           <ul class="grid-list">
@@ -206,7 +200,7 @@
                 </h3>
 
                 <p class="card-text">
-                  Lorem ipsum dolor consec tur elit adicing sed umod tempor.
+                Take the next step in your academic journey and unlock a world of possibilities with our online degree programs.
                 </p>
 
                 <span class="card-badge">7 Courses</span>
@@ -227,7 +221,7 @@
                 </h3>
 
                 <p class="card-text">
-                  Lorem ipsum dolor consec tur elit adicing sed umod tempor.
+                Embark on a transformative educational journey and gain valuable insights and practical skills through our non-degree programs. 
                 </p>
 
                 <span class="card-badge">4 Courses</span>
@@ -248,7 +242,7 @@
                 </h3>
 
                 <p class="card-text">
-                  Lorem ipsum dolor consec tur elit adicing sed umod tempor.
+                Our off-campus programs bring education directly to you, offering the flexibility to learn from any location while still enjoying a high-quality educational experience.
                 </p>
 
                 <span class="card-badge">8 Courses</span>
@@ -269,7 +263,7 @@
                 </h3>
 
                 <p class="card-text">
-                  Lorem ipsum dolor consec tur elit adicing sed umod tempor.
+                Benefit from the convenience of remote learning while also enjoying opportunities for face-to-face interactions, hands-on experiences, and networking with peers and faculty.
                 </p>
 
                 <span class="card-badge">8 Courses</span>
@@ -658,7 +652,7 @@
 
           <p class="section-subtitle">Latest Articles</p>
 
-          <h2 class="h2 section-title">Get News With Eduweb</h2>
+          <h2 class="h2 section-title">Get News With LearnOpia</h2>
 
           <ul class="grid-list">
 
@@ -846,7 +840,7 @@
           <div class="wrapper">
             <span class="span">Email:</span>
 
-            <a href="mailto:info@eduweb.com" class="footer-link">info@eduweb.com</a>
+            <a href="mailto:info@eduweb.com" class="footer-link">info@learnopia.com</a>
           </div>
 
         </div>
