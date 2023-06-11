@@ -58,7 +58,7 @@
                     </div>
 
                   </form>
-                  <p align="center">I have already account. <a href="index1.php" class="text-warning" style="font-weight:600; text-decoration:none;">Login.</a></p>
+                  <p align="center">I have already account. <a href="login.php" class="text-warning" style="font-weight:600; text-decoration:none;">Login.</a></p>
                 </div>
                 <div class="col-md-10 col-lg-6 col-xl-7 d-flex align-items-center order-1 order-lg-2">
 

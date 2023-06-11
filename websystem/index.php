@@ -6,35 +6,14 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <!-- 
-    - primary meta tag
-  -->
   <title>LearnOpia - The Best Program to Enroll for Exchange</title>
-  <!-- <meta name="title" content="LearnOpia - The Best Program to Enroll for Exchange">
-  <meta name="description" content="This is an education html template made by codewithsadee"> -->
-
-  <!-- 
-    - favicon
-  -->
-  <!-- <link rel="shortcut icon" href="./favicon.svg" type="image/svg+xml"> -->
-
-  <!-- 
-    - custom css link
-  -->
+  
   <link rel="stylesheet" href="./assets/css/style.css">
 
-  <!-- 
-    - google font link
-  -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link
-    href="https://fonts.googleapis.com/css2?family=League+Spartan:wght@400;500;600;700;800&family=Poppins:wght@400;500&display=swap"
-    rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=League+Spartan:wght@400;500;600;700;800&family=Poppins:wght@400;500&display=swap" rel="stylesheet">
 
-  <!-- 
-    - preload images
-  -->
   <link rel="preload" as="image" href="./assets/images/hero-bg.svg">
   <link rel="preload" as="image" href="./assets/images/hero-banner-1.jpg">
   <link rel="preload" as="image" href="./assets/images/hero-banner-2.jpg">
@@ -95,7 +74,7 @@
           <ion-icon name="search-outline" aria-hidden="true"></ion-icon>
         </button>
 
-        <a href="index1.php" class="btn has-before">
+        <a href="login.php" class="btn has-before">
           <span class="span">Try for free</span>
 
           <ion-icon name="arrow-forward-outline" aria-hidden="true"></ion-icon>
@@ -111,9 +90,6 @@
 
     </div>
   </header>
-
-
-
 
 
   <main>
