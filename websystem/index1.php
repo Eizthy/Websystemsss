@@ -166,7 +166,7 @@
                   <!-- <span class="badge">Beginner</span> -->
                   <?php
                       $query = "SELECT * FROM `data` WHERE id=1";
-                      $result = mysqli_query($conn, $query); // Corrected variable name from $sql to $query
+                      $result = mysqli_query($conn, $query); 
                       while ($row = mysqli_fetch_array($result)) {
                         echo "<h3>" . $row['course'] . " lesson</h3>";
                       } 
@@ -174,6 +174,14 @@
                   <!-- <h3 class="h3">
                     <a href="#" class="card-title">Build Responsive Real- World Websites with HTML and CSS</a>
                   </h3> -->
+
+                  <?php
+                      $query = "SELECT * FROM `data` WHERE id=1";
+                      $result = mysqli_query($conn, $query); 
+                      while ($row = mysqli_fetch_array($result)) {
+                        echo "<data> P" . $row['price'] . ".00</data>";
+                      } 
+                    ?>
 
 
                   <!-- <data class="price" value="29">$29.00</data> -->
@@ -186,9 +194,9 @@
                       $query = "SELECT * FROM `data` WHERE id=1";
                       $result = mysqli_query($conn, $query); 
                       while ($row = mysqli_fetch_array($result)) {
-                        echo "<span>" . $row['lesson'] . " lesson</span>";
+                        echo "<span>" . $row['lessons'] . " lesson</span>";
                       } 
-                      ?>
+                    ?>
                   </li>
 
                     <li class="card-meta-item">
