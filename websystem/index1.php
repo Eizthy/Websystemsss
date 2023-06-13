@@ -59,7 +59,14 @@
             <ul class="dropdown-content">
               <li><a href="reset.php">Change Password</a></li>
               <li><a href="#" onclick="logout()">Logout</a></li>
-
+                <script>
+                function logout() {
+                  var confirmLogout = confirm("Are you sure you want to logout?");
+                  if (confirmLogout) {
+                    window.location.href = "index.php"; // Replace "logout.php" with the actual logout URL
+                  }
+                }
+                </script>
             </ul>
           </li>
         </ul>

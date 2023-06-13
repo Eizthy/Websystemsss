@@ -61,13 +61,3 @@ const activeElem = function () {
 }
 
 addEventOnElem(window, "scroll", activeElem);
-
-/**
- * Ask user confirmation for log out
- */
-   function logout() {
-     var confirmLogout = confirm("Are you sure you want to logout?");
-        if (confirmLogout) {
-          window.location.href = "index.php"; 
-     }
-  }
