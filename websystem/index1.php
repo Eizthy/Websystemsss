@@ -482,7 +482,7 @@
                   <a href="#" class="card-subtitle">Online</a>
 
                   <h3 class="h3">
-                    <a href="#" class="card-title">Become A Better Blogger: Content Planning</a>
+                    <a href="#" class="card-title">10 Essential Study Tips for Online Learners</a>
                   </h3>
 
                   <ul class="card-meta-list">
@@ -490,7 +490,7 @@
                     <li class="card-meta-item">
                       <ion-icon name="calendar-outline" aria-hidden="true"></ion-icon>
 
-                      <span class="span">Oct 10, 2021</span>
+                      <span class="span">April 10, 2023</span>
                     </li>
 
                     <li class="card-meta-item">
@@ -502,7 +502,7 @@
                   </ul>
 
                   <p class="card-text">
-                    Lorem Ipsum Dolor Sit Amet Cons Tetur Adipisicing Sed.
+                  Discover crucial strategies to enhance your online learning experience and boost your academic performance.
                   </p>
 
                 </div>
@@ -535,19 +535,20 @@
                     <li class="card-meta-item">
                       <ion-icon name="calendar-outline" aria-hidden="true"></ion-icon>
 
-                      <span class="span">Oct 10, 2021</span>
+                      <span class="span">May 16, 2023
+                      </span>
                     </li>
 
                     <li class="card-meta-item">
                       <ion-icon name="chatbubbles-outline" aria-hidden="true"></ion-icon>
 
-                      <span class="span">Com 09</span>
+                      <span class="span">Com 11</span>
                     </li>
 
                   </ul>
 
                   <p class="card-text">
-                    Lorem Ipsum Dolor Sit Amet Cons Tetur Adipisicing Sed.
+                  Enhance your blogging skills by mastering effective content planning techniques to consistently create engaging and impactful blog posts.
                   </p>
 
                 </div>
@@ -572,7 +573,7 @@
                   <a href="#" class="card-subtitle">Online</a>
 
                   <h3 class="h3">
-                    <a href="#" class="card-title">Become A Better Blogger: Content Planning</a>
+                    <a href="#" class="card-title">The Benefits of Online Education: Why It's Worth Your Investment</a>
                   </h3>
 
                   <ul class="card-meta-list">
@@ -580,7 +581,7 @@
                     <li class="card-meta-item">
                       <ion-icon name="calendar-outline" aria-hidden="true"></ion-icon>
 
-                      <span class="span">Oct 10, 2021</span>
+                      <span class="span">June 14, 2023</span>
                     </li>
 
                     <li class="card-meta-item">
@@ -592,7 +593,7 @@
                   </ul>
 
                   <p class="card-text">
-                    Lorem Ipsum Dolor Sit Amet Cons Tetur Adipisicing Sed.
+                  Uncover the numerous advantages of online education, from flexibility and accessibility to career advancement opportunities.
                   </p>
 
                 </div>
@@ -631,13 +632,13 @@
           </a>
 
           <p class="footer-brand-text">
-            Lorem ipsum dolor amet consecto adi pisicing elit sed eiusm tempor incidid unt labore dolore.
+            Join our vibrant community of learners today and unlock your full learning potential with LearnOpia!
           </p>
 
           <div class="wrapper">
             <span class="span">Add:</span>
 
-            <address class="address">70-80 Upper St Norwich NR2</address>
+            <address class="address">Palawan State University</address>
           </div>
 
           <div class="wrapper">
@@ -779,7 +780,7 @@
       <div class="container">
 
         <p class="copyright">
-          Copyright 2022 All Rights Reserved by <a href="#" class="copyright-link">codewithsadee</a>
+          Copyright 2023 All Rights Reserved by <a href="#" class="copyright-link">Abad&Danay</a>
         </p>
 
       </div>
