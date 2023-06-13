@@ -1,7 +1,7 @@
 <?php
 $server = 'localhost';
 $username = 'root';
-$password = 'Ihartu!';
+$password = 'nyorks';
 $database = 'login_register_db';
 
 if (isset($_POST))
