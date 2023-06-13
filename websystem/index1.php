@@ -60,15 +60,6 @@
               <li><a href="reset.php">Change Password</a></li>
               <li><a href="#" onclick="logout()">Logout</a></li>
 
-            <script>
-            function logout() {
-              var confirmLogout = confirm("Are you sure you want to logout?");
-              if (confirmLogout) {
-                window.location.href = "index.php"; 
-              }
-            }
-            </script>
-
             </ul>
           </li>
         </ul>
