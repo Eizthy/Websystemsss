@@ -31,7 +31,7 @@
   <header class="header" data-header>
     <div class="container">
 
-    <img src="./assets/images/logo.svg" width="162" height="50" alt="EduWeb logo">
+    <img src="./assets/images/learnopia.png" width="190" height="70" alt="EduWeb logo">
 
       <nav class="navbar" data-navbar>
 
@@ -142,6 +142,9 @@
 
       <section class="section course" id="courses" aria-label="course">
         <div class="container">
+          <?php
+          include 'connection.php';
+          ?>
 
           <p class="section-subtitle">Popular Courses</p>
 
@@ -163,17 +166,30 @@
                   <span class="span">3 Weeks</span>
                 </div>
 
+
                 <div class="card-content">
 
-                  <span class="badge">Beginner</span>
-
-                  <h3 class="h3">
+                  <?php
+                    $query = "SELECT * FROM `data` WHERE id=1";
+                    $result = mysqli_query($conn, $query); 
+                    while ($row = mysqli_fetch_array($result)) {
+                      echo "<span class=\"badge\">" . $row['level'] . "</span>";
+                    } 
+                    ?>
+                  <!-- <span class="badge">Beginner</span> -->
+                  <?php
+                      $query = "SELECT * FROM `data` WHERE id=1";
+                      $result = mysqli_query($conn, $query); 
+                      while ($row = mysqli_fetch_array($result)) {
+                        echo '<h3 class="h3"><a href="#" class="card-title">' . $row['course'] . ' Lesson for Beginners</a></h3>';
+                      } 
+                      ?>
+                  <!-- <h3 class="h3">
                     <a href="#" class="card-title">Build Responsive Real- World Websites with HTML and CSS</a>
-                  </h3>
-
+                  </h3> -->
                   <div class="wrapper">
 
-                    <div class="rating-wrapper">
+                  <div class="rating-wrapper">
                       <ion-icon name="star"></ion-icon>
                       <ion-icon name="star"></ion-icon>
                       <ion-icon name="star"></ion-icon>
@@ -181,24 +197,46 @@
                       <ion-icon name="star"></ion-icon>
                     </div>
 
-                    <p class="rating-text">(5.0/7 Rating)</p>
+                    <p class="rating-text">(5.0 /9 Rating)</p>
 
                   </div>
 
-                  <data class="price" value="29">$29.00</data>
+                  <?php
+                    $query = "SELECT * FROM `data` WHERE id=1";
+                    $result = mysqli_query($conn, $query); 
+                    while ($row = mysqli_fetch_array($result)) {
+                      echo "<data class=\"price\" style=\"color: red;\"> ₱" . $row['price'] . ".00</data>";
+                    } 
+                  ?>
+
+
+
+                  <!-- <data class="price" value="29">$29.00</data> -->
 
                   <ul class="card-meta-list">
 
-                    <li class="card-meta-item">
-                      <ion-icon name="library-outline" aria-hidden="true"></ion-icon>
-
-                      <span class="span">8 Lessons</span>
-                    </li>
+                  <li class="card-meta-item">
+                    <ion-icon name="library-outline" aria-hidden="true"></ion-icon>
+                    <?php
+                      $query = "SELECT * FROM `data` WHERE id=1";
+                      $result = mysqli_query($conn, $query); 
+                      while ($row = mysqli_fetch_array($result)) {
+                        echo "<span class=\"span\">" . $row['lessons'] . " lesson</span>";
+                      } 
+                    ?>
+                  </li>
 
                     <li class="card-meta-item">
                       <ion-icon name="people-outline" aria-hidden="true"></ion-icon>
+                      <?php
+                      $query = "SELECT * FROM `data` WHERE id=1";
+                      $result = mysqli_query($conn, $query); // Corrected variable name from $sql to $query
+                      while ($row = mysqli_fetch_array($result)) {
+                        echo "<span class=\"span\">" . $row['students'] . " Students</span>";
+                      } 
+                      ?>
 
-                      <span class="span">20 Students</span>
+                      <!-- <span class="span">20 Students</span> -->
                     </li>
 
                   </ul>
@@ -207,6 +245,61 @@
 
               </div>
             </li>
+            <div class="course-card">
+              <figure class="card-banner img-holder" style="--width: 370; --height: 220;">
+                <img src="./assets/images/course-3.jpg" width="370" height="220" loading="lazy"
+                  alt="The Complete Camtasia Course for Content Creators" class="img-cover">
+              </figure>
+
+              <div class="abs-badge">
+                <ion-icon name="time-outline" aria-hidden="true"></ion-icon>
+
+                <span class="span">3 Weeks</span>
+              </div>
+
+              <div class="card-content">
+
+                <span class="badge">Intermediate</span>
+
+                <h3 class="h3">
+                  <a href="#" class="card-title">The Complete Camtasia Course for Content Creators</a>
+                </h3>
+
+                <div class="wrapper">
+
+                  <div class="rating-wrapper">
+                    <ion-icon name="star"></ion-icon>
+                    <ion-icon name="star"></ion-icon>
+                    <ion-icon name="star"></ion-icon>
+                    <ion-icon name="star"></ion-icon>
+                    <ion-icon name="star"></ion-icon>
+                  </div>
+
+                  <p class="rating-text">(4.9 /7 Rating)</p>
+
+                </div>
+
+                <data class="price" value="49" style="color: red;">₱35.00</data>
+                <ul class="card-meta-list">
+
+                  <li class="card-meta-item">
+                    <ion-icon name="library-outline" aria-hidden="true"></ion-icon>
+
+                    <span class="span">13 Lessons</span>
+                  </li>
+
+                  <li class="card-meta-item">
+                    <ion-icon name="people-outline" aria-hidden="true"></ion-icon>
+
+                    <span class="span">18 Students</span>
+                  </li>
+
+                </ul>
+
+              </div>
+
+              </div>
+              </li>               
 
             <li>
               <div class="course-card">
@@ -232,7 +325,7 @@
 
                   <div class="wrapper">
 
-                    <div class="rating-wrapper">
+                  <div class="rating-wrapper">
                       <ion-icon name="star"></ion-icon>
                       <ion-icon name="star"></ion-icon>
                       <ion-icon name="star"></ion-icon>
@@ -244,7 +337,7 @@
 
                   </div>
 
-                  <data class="price" value="49">$49.00</data>
+                  <data class="price" value="49" style="color: red;">₱49.00</data>
 
                   <ul class="card-meta-list">
 
@@ -268,63 +361,6 @@
             </li>
 
             <li>
-              <div class="course-card">
-
-                <figure class="card-banner img-holder" style="--width: 370; --height: 220;">
-                  <img src="./assets/images/course-3.jpg" width="370" height="220" loading="lazy"
-                    alt="The Complete Camtasia Course for Content Creators" class="img-cover">
-                </figure>
-
-                <div class="abs-badge">
-                  <ion-icon name="time-outline" aria-hidden="true"></ion-icon>
-
-                  <span class="span">3 Weeks</span>
-                </div>
-
-                <div class="card-content">
-
-                  <span class="badge">Intermediate</span>
-
-                  <h3 class="h3">
-                    <a href="#" class="card-title">The Complete Camtasia Course for Content Creators</a>
-                  </h3>
-
-                  <div class="wrapper">
-
-                    <div class="rating-wrapper">
-                      <ion-icon name="star"></ion-icon>
-                      <ion-icon name="star"></ion-icon>
-                      <ion-icon name="star"></ion-icon>
-                      <ion-icon name="star"></ion-icon>
-                      <ion-icon name="star"></ion-icon>
-                    </div>
-
-                    <p class="rating-text">(4.9 /7 Rating)</p>
-
-                  </div>
-
-                  <data class="price" value="35">$35.00</data>
-
-                  <ul class="card-meta-list">
-
-                    <li class="card-meta-item">
-                      <ion-icon name="library-outline" aria-hidden="true"></ion-icon>
-
-                      <span class="span">13 Lessons</span>
-                    </li>
-
-                    <li class="card-meta-item">
-                      <ion-icon name="people-outline" aria-hidden="true"></ion-icon>
-
-                      <span class="span">18 Students</span>
-                    </li>
-
-                  </ul>
-
-                </div>
-
-              </div>
-            </li>
 
           </ul>
 
@@ -456,7 +492,7 @@
                   <a href="#" class="card-subtitle">Online</a>
 
                   <h3 class="h3">
-                    <a href="#" class="card-title">Become A Better Blogger: Content Planning</a>
+                    <a href="#" class="card-title">10 Essential Study Tips for Online Learners</a>
                   </h3>
 
                   <ul class="card-meta-list">
@@ -464,7 +500,7 @@
                     <li class="card-meta-item">
                       <ion-icon name="calendar-outline" aria-hidden="true"></ion-icon>
 
-                      <span class="span">Oct 10, 2021</span>
+                      <span class="span">April 10, 2023</span>
                     </li>
 
                     <li class="card-meta-item">
@@ -476,7 +512,7 @@
                   </ul>
 
                   <p class="card-text">
-                    Lorem Ipsum Dolor Sit Amet Cons Tetur Adipisicing Sed.
+                  Discover crucial strategies to enhance your online learning experience and boost your academic performance.
                   </p>
 
                 </div>
@@ -509,19 +545,20 @@
                     <li class="card-meta-item">
                       <ion-icon name="calendar-outline" aria-hidden="true"></ion-icon>
 
-                      <span class="span">Oct 10, 2021</span>
+                      <span class="span">May 16, 2023
+                      </span>
                     </li>
 
                     <li class="card-meta-item">
                       <ion-icon name="chatbubbles-outline" aria-hidden="true"></ion-icon>
 
-                      <span class="span">Com 09</span>
+                      <span class="span">Com 11</span>
                     </li>
 
                   </ul>
 
                   <p class="card-text">
-                    Lorem Ipsum Dolor Sit Amet Cons Tetur Adipisicing Sed.
+                  Enhance your blogging skills by mastering effective content planning techniques to consistently create engaging and impactful blog posts.
                   </p>
 
                 </div>
@@ -546,7 +583,7 @@
                   <a href="#" class="card-subtitle">Online</a>
 
                   <h3 class="h3">
-                    <a href="#" class="card-title">Become A Better Blogger: Content Planning</a>
+                    <a href="#" class="card-title">The Benefits of Online Education: Why It's Worth Your Investment</a>
                   </h3>
 
                   <ul class="card-meta-list">
@@ -554,7 +591,7 @@
                     <li class="card-meta-item">
                       <ion-icon name="calendar-outline" aria-hidden="true"></ion-icon>
 
-                      <span class="span">Oct 10, 2021</span>
+                      <span class="span">June 14, 2023</span>
                     </li>
 
                     <li class="card-meta-item">
@@ -566,7 +603,7 @@
                   </ul>
 
                   <p class="card-text">
-                    Lorem Ipsum Dolor Sit Amet Cons Tetur Adipisicing Sed.
+                  Uncover the numerous advantages of online education, from flexibility and accessibility to career advancement opportunities.
                   </p>
 
                 </div>
@@ -601,17 +638,17 @@
         <div class="footer-brand">
 
           <a href="#" class="logo">
-            <img src="./assets/images/logo-light.svg" width="162" height="50" alt="EduWeb logo">
+            <img src="./assets/images/learnopia.png" width="190" height="70" alt="EduWeb logo">
           </a>
 
           <p class="footer-brand-text">
-            Lorem ipsum dolor amet consecto adi pisicing elit sed eiusm tempor incidid unt labore dolore.
+            Join our vibrant community of learners today and unlock your full learning potential with LearnOpia!
           </p>
 
           <div class="wrapper">
             <span class="span">Add:</span>
 
-            <address class="address">70-80 Upper St Norwich NR2</address>
+            <address class="address">Palawan State University</address>
           </div>
 
           <div class="wrapper">
@@ -694,72 +731,72 @@
 
         <div class="footer-list">
 
-          <p class="footer-list-title">Contacts</p>
+            <p class="footer-list-title">Contacts</p>
 
-          <p class="footer-list-text">
-            Enter your email address to register to our newsletter subscription
-          </p>
+            <p class="footer-list-text">
+              Enter your email address to register to our newsletter subscription
+            </p>
 
-          <form action="" class="newsletter-form">
-            <input type="email" name="email_address" placeholder="Your email" required class="input-field">
+            <form action="" class="newsletter-form">
+              <input type="email" name="email_address" placeholder="Your email" required class="input-field">
 
-            <button type="submit" class="btn has-before">
-              <span class="span">Subscribe</span>
+              <button type="submit" class="btn has-before">
+                <span class="span">Subscribe</span>
 
-              <ion-icon name="arrow-forward-outline" aria-hidden="true"></ion-icon>
-            </button>
-          </form>
+                <ion-icon name="arrow-forward-outline" aria-hidden="true"></ion-icon>
+              </button>
+            </form>
 
-          <ul class="social-list">
+            <ul class="social-list">
 
-            <li>
-              <a href="#" class="social-link">
-                <ion-icon name="logo-facebook"></ion-icon>
-              </a>
-            </li>
+              <li>
+                <a href="#" class="social-link">
+                  <ion-icon name="logo-facebook"></ion-icon>
+                </a>
+              </li>
 
-            <li>
-              <a href="#" class="social-link">
-                <ion-icon name="logo-linkedin"></ion-icon>
-              </a>
-            </li>
+              <li>
+                <a href="#" class="social-link">
+                  <ion-icon name="logo-linkedin"></ion-icon>
+                </a>
+              </li>
 
-            <li>
-              <a href="#" class="social-link">
-                <ion-icon name="logo-instagram"></ion-icon>
-              </a>
-            </li>
+              <li>
+                <a href="#" class="social-link">
+                  <ion-icon name="logo-instagram"></ion-icon>
+                </a>
+              </li>
 
-            <li>
-              <a href="#" class="social-link">
-                <ion-icon name="logo-twitter"></ion-icon>
-              </a>
-            </li>
+              <li>
+                <a href="#" class="social-link">
+                  <ion-icon name="logo-twitter"></ion-icon>
+                </a>
+              </li>
 
-            <li>
-              <a href="#" class="social-link">
-                <ion-icon name="logo-youtube"></ion-icon>
-              </a>
-            </li>
+              <li>
+                <a href="#" class="social-link">
+                  <ion-icon name="logo-youtube"></ion-icon>
+                </a>
+              </li>
 
-          </ul>
+            </ul>
 
-        </div>
+            </div>
 
-      </div>
-    </div>
+            </div>
+            </div>
 
-    <div class="footer-bottom">
-      <div class="container">
+            <div class="footer-bottom">
+            <div class="container">
 
-        <p class="copyright">
-          Copyright 2022 All Rights Reserved by <a href="#" class="copyright-link">codewithsadee</a>
-        </p>
+            <p class="copyright">
+            Copyright 2023 All Rights Reserved by <a href="#" class="copyright-link">Abad&Danay</a>
+            </p>
 
-      </div>
-    </div>
+            </div>
+            </div>
 
-  </footer>
+            </footer>
 
 
 

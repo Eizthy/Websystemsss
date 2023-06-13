@@ -194,7 +194,7 @@
                       <ion-icon name="star"></ion-icon>
                     </div>
 
-                    <p class="rating-text">(5 /9 Rating)</p>
+                    <p class="rating-text">(5.0 /9 Rating)</p>
 
                   </div>
 
