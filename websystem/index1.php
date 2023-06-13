@@ -155,7 +155,9 @@
                   <span class="span">3 Weeks</span>
                 </div>
 
+
                 <div class="card-content">
+
                   <?php
                     $query = "SELECT * FROM `data` WHERE id=1";
                     $result = mysqli_query($conn, $query); 
@@ -168,18 +170,31 @@
                       $query = "SELECT * FROM `data` WHERE id=1";
                       $result = mysqli_query($conn, $query); 
                       while ($row = mysqli_fetch_array($result)) {
-                        echo '<h3 class="h3"><a href="#" class="card-title">' . $row['course'] . ' lesson</a></h3>';
+                        echo '<h3 class="h3"><a href="#" class="card-title">' . $row['course'] . ' Lesson for Beginners</a></h3>';
                       } 
                       ?>
                   <!-- <h3 class="h3">
                     <a href="#" class="card-title">Build Responsive Real- World Websites with HTML and CSS</a>
                   </h3> -->
+                  <div class="wrapper">
+
+                  <div class="rating-wrapper">
+                      <ion-icon name="star"></ion-icon>
+                      <ion-icon name="star"></ion-icon>
+                      <ion-icon name="star"></ion-icon>
+                      <ion-icon name="star"></ion-icon>
+                      <ion-icon name="star"></ion-icon>
+                    </div>
+
+                    <p class="rating-text">(5 /9 Rating)</p>
+
+                  </div>
 
                   <?php
                       $query = "SELECT * FROM `data` WHERE id=1";
                       $result = mysqli_query($conn, $query); 
                       while ($row = mysqli_fetch_array($result)) {
-                        echo "<data class=\"price\"> P" . $row['price'] . ".00</data>";
+                        echo "<data class=\"price\"> ₱" . $row['price'] . ".00</data>";
                       } 
                     ?>
 
@@ -243,11 +258,19 @@
 
                   <div class="wrapper">
 
+                  <div class="rating-wrapper">
+                      <ion-icon name="star"></ion-icon>
+                      <ion-icon name="star"></ion-icon>
+                      <ion-icon name="star"></ion-icon>
+                      <ion-icon name="star"></ion-icon>
+                      <ion-icon name="star"></ion-icon>
+                    </div>
+
                     <p class="rating-text">(4.5 /9 Rating)</p>
 
                   </div>
 
-                  <data class="price" value="49">$49.00</data>
+                  <data class="price" value="49">₱49.00</data>
 
                   <ul class="card-meta-list">
 
@@ -306,7 +329,7 @@
 
                   </div>
 
-                  <data class="price" value="35">$35.00</data>
+                  <data class="price" value="35">₱35.00</data>
 
                   <ul class="card-meta-list">
 
