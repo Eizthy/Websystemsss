@@ -22,7 +22,7 @@
 
 </head>
 
-<body id="top">
+<body id="top" style="padding-top: 100px;">
 
   <!-- 
     - #HEADER
@@ -30,10 +30,10 @@
 
   <header class="header" data-header>
     <div class="container">
-      <img src="./assets/images/logo.svg" width="162" height="50" alt="EduWeb logo">
+      <img src="./assets/images/learnopia.png" width="190" height="70" alt="EduWeb logo">
       <nav class="navbar" data-navbar>
         <div class="wrapper">
-          <img src="./assets/images/logo.svg" width="162" height="50" alt="EduWeb logo">
+          <img src="./assets/images/learnopia.png" width="162" height="50" alt="EduWeb logo">
           <button class="nav-close-btn" aria-label="close menu" data-nav-toggler>
             <ion-icon name="close-outline" aria-hidden="true"></ion-icon>
           </button>
@@ -55,7 +55,7 @@
             <a href="#" class="navbar-link" data-nav-link>Contact</a>
           </li>
           <li class="navbar-item dropdown">
-            <a href="#" class="navbar-link">admin</a>
+            <a href="#" class="navbar-link">Admin</a>
             <ul class="dropdown-content">
               <li><a href="reset.php">Change Password</a></li>
               <li><a href="index.php">Logout</a></li>
@@ -64,19 +64,49 @@
         </ul>
       </nav>
       <div class="header-actions">
+  <button class="header-action-btn" aria-label="open menu" data-nav-toggler>
+    <ion-icon name="menu-outline" aria-hidden="true"></ion-icon>
+  </button>
+</div>
+<div class="overlay" data-nav-toggler data-overlay></div>
+</div>
+</header>
 
-        <button class="header-action-btn" aria-label="open menu" data-nav-toggler>
-          <ion-icon name="menu-outline" aria-hidden="true"></ion-icon>
-        </button>
-      </div>
-      <div class="overlay" data-nav-toggler data-overlay></div>
+<div style="padding: 20px;">
+  <form>
+    <label for="newsCategory">News Category:</label>
+    <select id="newsCategory" name="newsCategory" style="font-size: 15px;">
+      <option value="beginner">Beginner</option>
+      <option value="intermediate">Intermediate</option>
+      <option value="advanced">Advanced</option>
+    </select>
+
+    <br><br>
+
+    <label for="newsTitle" style="display: inline-block; margin-right: 10px;">Course Title:</label>
+    <input type="text" id="newsTitle" name="newsTitle" style="width: 300px; border: 1px solid #ccc; display: inline-block;" placeholder="Enter your Title..." required>
+
+    <br>
+
+    <p>Description:</p>
+    <label for="newsDescription"></label>
+    <textarea id="newsDescription" name="newsDescription" required style="width: 500px; height: 300px; border: 1px solid #ccc;" required></textarea>
+
+    <br><br>
+
+    <label for="students" style="display: inline-block; margin-right: 10px;">Students:</label>
+    <input type="text" id="students" name="students" style="width: 300px; border: 1px solid #ccc; display: inline-block;" placeholder="Enter number of students..." required>
+
+    <br><br>
+
+    <div style="display: flex; justify-content: flex-start; gap: 10px;">
+      <button type="button" style="border: 1px solid gray;">Undo</button>
+      <button type="submit" style="border: 1px solid gray;">Save</button>
+      <button type="button" style="border: 1px solid gray;">Delete</button>
     </div>
-  </header>
 
-
-
-
-
+  </form>
+</div>
 
 
 
@@ -92,17 +122,17 @@
         <div class="footer-brand">
 
           <a href="#" class="logo">
-            <img src="./assets/images/logo-light.svg" width="162" height="50" alt="EduWeb logo">
+            <img src="./assets/images/learnopia.png" width="190" height="70" alt="EduWeb logo">
           </a>
 
           <p class="footer-brand-text">
-            Lorem ipsum dolor amet consecto adi pisicing elit sed eiusm tempor incidid unt labore dolore.
+            Join our vibrant community of learners today and unlock your full learning potential with LearnOpia!
           </p>
 
           <div class="wrapper">
             <span class="span">Add:</span>
 
-            <address class="address">70-80 Upper St Norwich NR2</address>
+            <address class="address">Palawan State University</address>
           </div>
 
           <div class="wrapper">
