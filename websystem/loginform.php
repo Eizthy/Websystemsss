@@ -22,17 +22,14 @@ if (isset($_POST['login'])) {
     } else {
         if (mysqli_num_rows($result) > 0) {
             $row = mysqli_fetch_array($result);
-            $name = $row['name'];
-            $username = $row['username'];
-            $password = $row['password'];
-
-
-            if ($username == $username && $password == $password) {
-                $_SESSION['name'] = $name;
-                $_SESSION['username'] = $username;
-                $_SESSION['password'] = $password;
+            if($row["usertype"] =="user"){
                 header('location:index1.php');
             }
+
+            if($row["usertype"] =="admin"){
+                header('location:admin.php');
+            }
+
         } else {
             echo "<script>alert('Invalid Username or Password');</script>";
             return "login.php";

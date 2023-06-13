@@ -37,6 +37,8 @@
   --black_30: hsla(0, 0%, 0%, 0.3);
   --kappel: hsl(170, 75%, 41%);
   --white: hsl(0, 0%, 100%);
+  --oxford-blue: hsl(224, 53%, 10%);
+  --light-coral: hsl(357, 100%, 75%);
 
   /**
    * gradient color
@@ -51,6 +53,8 @@
   --ff-league_spartan: 'League Spartan', sans-serif;
   --ff-poppins: 'Poppins', sans-serif; 
 
+  --title-lg: 2.2rem;
+  --title-sm: 1.8rem;
   --fs-1: 4.2rem;
   --fs-2: 3.2rem;
   --fs-3: 2.3rem;
@@ -177,8 +181,19 @@ body {
 \*-----------------------------------*/
 
 .container { padding-inline: 15px; }
+.headline-md,
+.title-lg {
+  color: var(--oxford-blue);
+  font-weight: var(--fw-700);
+}
+
+.title-lg {
+  font-size: var(--title-lg);
+  line-height: 1.4;
+}
 
 .section { padding-block: var(--section-padding); }
+.grid-list { grid-template-columns: 1fr 1fr; }
 
 .shape {
   position: absolute;
@@ -285,17 +300,38 @@ body {
   margin-block: 15px 25px;
 }
 
-.grid-list {
+/* .grid-list {
   display: grid;
   gap: 30px;
-}
+} */
 
-.category-card,
 .stats-card { background-color: hsla(var(--color), 0.1); }
 
 :is(.course, .blog) .section-title { margin-block-end: 40px; }
+.grid-list {
+  display: grid;
+  gap: 28px;
+}
 
+.card {
+  position: relative;
+  background-color: var(--white);
+  padding: 24px;
+  border-radius: var(--radius-8);
+  transition: var(--transition);
+}
 
+.card:is(:hover, :focus-within) { box-shadow: var(--shadow-1); }
+
+.layer-link {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.w-100 { width: 100%; }
 
 
 
@@ -448,7 +484,37 @@ body {
   pointer-events: all;
 }
 
-.dropdown {
+/* Dropdown Menu */
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f9f9f9;
+  min-width: 160px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  z-index: 1;
+}
+
+.dropdown-item {
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+  color: #333;
+}
+
+.dropdown-divider {
+  border-top: 1px solid #ccc;
+  margin: 4px 0;
+} 
+
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+
+.dropdown-content li {
+  padding: 4px 16px;
+}
+
+/* .dropdown {
   position: relative;
   display: inline-block;
 }
@@ -479,7 +545,7 @@ body {
 .dropdown-divider {
   border-top: 1px solid #ccc;
   margin: 4px 0;
-}
+} */
 
 
 
@@ -520,123 +586,6 @@ body {
   border-top-left-radius: 50px;
   border-bottom-right-radius: 90px;
 }
-
-
-
-
-
-/*-----------------------------------*\
-  #CATEGORY
-\*-----------------------------------*/
-
-.category .section-subtitle { color: var(--radical-red); }
-
-.category .section-title { --color: var(--kappel); }
-
-.category .section-text { margin-block-end: 40px; }
-
-.category-card {
-  padding: 50px 30px;
-  text-align: center;
-  border-radius: var(--radius-5);
-}
-
-.category-card .card-icon {
-  background-color: hsla(var(--color), 0.1);
-  width: 80px;
-  height: 80px;
-  display: grid;
-  place-items: center;
-  border-radius: var(--radius-circle);
-  margin-inline: auto;
-  margin-block-end: 30px;
-}
-
-.category-card .card-text {
-  color: var(--eerie-black-1);
-  font-size: var(--fs-5);
-  margin-block: 15px 25px;
-}
-
-.category-card .card-badge {
-  background-color: hsla(var(--color), 0.1);
-  color: hsl(var(--color));
-  font-size: var(--fs-5);
-  font-weight: var(--fw-500);
-  padding: 2px 18px;
-  max-width: max-content;
-  margin-inline: auto;
-  border-radius: var(--radius-5);
-}
-
-
-
-
-
-/*-----------------------------------*\
-  #ABOUT
-\*-----------------------------------*/
-
-.about {
-  padding-block-start: 0;
-  overflow: hidden;
-}
-
-.about .container {
-  display: grid;
-  gap: 30px;
-}
-
-.about-banner {
-  position: relative;
-  z-index: 1;
-}
-
-.about-banner .img-holder { border-radius: var(--radius-10); }
-
-.about-shape-2 {
-  display: block;
-  bottom: -100px;
-  left: -60px;
-  animation: bounce 2.5s infinite;
-}
-
-@keyframes bounce {
-  0%,
-  20%,
-  50%,
-  80%,
-  100% { transform: translateY(0); }
-
-  40% { transform: translateY(-30px); }
-
-  60% { transform: translateY(-15px); }
-}
-
-.about :is(.section-subtitle, .section-title, .section-text) {
-  text-align: left;
-}
-
-.about-item {
-  margin-block: 15px;
-  display: flex;
-  align-items: center;
-  gap: 15px;
-}
-
-.about-item ion-icon {
-  color: var(--selective-yellow);
-  font-size: 20px;
-  --ionicon-stroke-width: 50px;
-}
-
-.about-item .span {
-  color: var(--eerie-black-1);
-  font-family: var(--ff-league_spartan);
-}
-
-
-
 
 
 /*-----------------------------------*\

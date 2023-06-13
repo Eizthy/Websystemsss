@@ -29,72 +29,50 @@
   -->
 
   <header class="header" data-header>
-    <div class="container">
-
+  <div class="container">
     <img src="./assets/images/logo.svg" width="162" height="50" alt="EduWeb logo">
-
-      <nav class="navbar" data-navbar>
-
-        <div class="wrapper">
-          <img src="./assets/images/logo.svg" width="162" height="50" alt="EduWeb logo">
-          <button class="nav-close-btn" aria-label="close menu" data-nav-toggler>
-            <ion-icon name="close-outline" aria-hidden="true"></ion-icon>
-          </button>
-        </div>
-
-        <ul class="navbar-list">
-
-          <li class="navbar-item">
-            <a href="#home" class="navbar-link" data-nav-link>Home</a>
-          </li>
-
-          <li class="navbar-item">
-            <a href="#about" class="navbar-link" data-nav-link>About</a>
-          </li>
-
-          <li class="navbar-item">
-            <a href="#courses" class="navbar-link" data-nav-link>Courses</a>
-          </li>
-
-          <li class="navbar-item">
-            <a href="#blog" class="navbar-link" data-nav-link>Blog</a>
-          </li>
-
-          <li class="navbar-item">
-            <a href="#" class="navbar-link" data-nav-link>Contact</a>
-          </li>
-
-        </ul>
-
-      </nav>
-
-      <div class="header-actions">
-        <button class="header-action-btn" aria-label="toggle search" title="Search">
-          <ion-icon name="search-outline" aria-hidden="true"></ion-icon>
-        </button>
-
-        <div class="dropdown">
-          <a href="index1.php" class="btn has-before">Profile</a>
-          <div class="dropdown-content">
-            <ul>
-              <li><a href="reset.php">Change Password</a></li>
-              <div class="dropdown-divider"></div>
-              <li><a href="index.php">Logout</a></li>
-            </ul>
-          </div>
-        </div>
-
-        <button class="header-action-btn" aria-label="open menu" data-nav-toggler>
-          <ion-icon name="menu-outline" aria-hidden="true"></ion-icon>
+    <nav class="navbar" data-navbar>
+      <div class="wrapper">
+        <img src="./assets/images/logo.svg" width="162" height="50" alt="EduWeb logo">
+        <button class="nav-close-btn" aria-label="close menu" data-nav-toggler>
+          <ion-icon name="close-outline" aria-hidden="true"></ion-icon>
         </button>
       </div>
+      <ul class="navbar-list">
+        <li class="navbar-item">
+          <a href="#home" class="navbar-link" data-nav-link>Home</a>
+        </li>
+        <li class="navbar-item">
+          <a href="#about" class="navbar-link" data-nav-link>About</a>
+        </li>
+        <li class="navbar-item">
+          <a href="#courses" class="navbar-link" data-nav-link>Courses</a>
+        </li>
+        <li class="navbar-item">
+          <a href="#blog" class="navbar-link" data-nav-link>Blog</a>
+        </li>
+        <li class="navbar-item">
+          <a href="#" class="navbar-link" data-nav-link>Contact</a>
+        </li>
+        <li class="navbar-item dropdown">
+          <a href="#" class="navbar-link">Profile</a>
+          <ul class="dropdown-content">
+            <li><a href="reset.php">Change Password</a></li>
+            <li><a href="index.php">Logout</a></li>
+          </ul>
+        </li>
+      </ul>
+    </nav>
+    <div class="header-actions">
 
-
-
-      <div class="overlay" data-nav-toggler data-overlay></div>
-
+      <button class="header-action-btn" aria-label="open menu" data-nav-toggler>
+        <ion-icon name="menu-outline" aria-hidden="true"></ion-icon>
+      </button>
     </div>
-  </header>
+    <div class="overlay" data-nav-toggler data-overlay></div>
+  </div>
+</header>
+
 
 
 
@@ -107,8 +85,7 @@
         - #HERO
       -->
 
-      <section class="section hero has-bg-image" id="home" aria-label="home"
-        style="background-image: url('./assets/images/hero-bg.svg')">
+      <section class="section hero has-bg-image" id="home" aria-label="home">
         <div class="container">
 
           <div class="hero-content">
@@ -148,201 +125,15 @@
         </div>
       </section>
 
-
-
-
-
-      <!-- 
-        - #CATEGORY
-      -->
-
-      <section class="section category" aria-label="category">
-        <div class="container">
-
-          <p class="section-subtitle">Categories</p>
-
-          <h2 class="h2 section-title">
-            Online <span class="span">Classes</span> For Remote Learning.
-          </h2>
-
-          <p class="section-text">
-          Discover the future of education with our innovative online degree programs. 
-          </p>
-
-          <ul class="grid-list">
-
-            <li>
-              <div class="category-card" style="--color: 170, 75%, 41%">
-
-                <div class="card-icon">
-                  <img src="./assets/images/category-1.svg" width="40" height="40" loading="lazy"
-                    alt="Online Degree Programs" class="img">
-                </div>
-
-                <h3 class="h3">
-                  <a href="#" class="card-title">Online Degree Programs</a>
-                </h3>
-
-                <p class="card-text">
-                Take the next step in your academic journey and unlock a world of possibilities with our online degree programs.
-                </p>
-
-                <span class="card-badge">7 Courses</span>
-
-              </div>
-            </li>
-
-            <li>
-              <div class="category-card" style="--color: 351, 83%, 61%">
-
-                <div class="card-icon">
-                  <img src="./assets/images/category-2.svg" width="40" height="40" loading="lazy"
-                    alt="Non-Degree Programs" class="img">
-                </div>
-
-                <h3 class="h3">
-                  <a href="#" class="card-title">Non-Degree Programs</a>
-                </h3>
-
-                <p class="card-text">
-                Embark on a transformative educational journey and gain valuable insights and practical skills through our non-degree programs. 
-                </p>
-
-                <span class="card-badge">4 Courses</span>
-
-              </div>
-            </li>
-
-            <li>
-              <div class="category-card" style="--color: 229, 75%, 58%">
-
-                <div class="card-icon">
-                  <img src="./assets/images/category-3.svg" width="40" height="40" loading="lazy"
-                    alt="Off-Campus Programs" class="img">
-                </div>
-
-                <h3 class="h3">
-                  <a href="#" class="card-title">Off-Campus Programs</a>
-                </h3>
-
-                <p class="card-text">
-                Our off-campus programs bring education directly to you, offering the flexibility to learn from any location while still enjoying a high-quality educational experience.
-                </p>
-
-                <span class="card-badge">8 Courses</span>
-
-              </div>
-            </li>
-
-            <li>
-              <div class="category-card" style="--color: 42, 94%, 55%">
-
-                <div class="card-icon">
-                  <img src="./assets/images/category-4.svg" width="40" height="40" loading="lazy"
-                    alt="Hybrid Distance Programs" class="img">
-                </div>
-
-                <h3 class="h3">
-                  <a href="#" class="card-title">Hybrid Distance Programs</a>
-                </h3>
-
-                <p class="card-text">
-                Benefit from the convenience of remote learning while also enjoying opportunities for face-to-face interactions, hands-on experiences, and networking with peers and faculty.
-                </p>
-
-                <span class="card-badge">8 Courses</span>
-
-              </div>
-            </li>
-
-          </ul>
-
-        </div>
-      </section>
-
-
-
-
-
-      <!-- 
-        - #ABOUT
-      -->
-
-      <section class="section about" id="about" aria-label="about">
-        <div class="container">
-
-          <figure class="about-banner">
-
-            <div class="img-holder" style="--width: 520; --height: 370;">
-              <img src="./assets/images/about-banner.jpg" width="520" height="370" loading="lazy" alt="about banner"
-                class="img-cover">
-            </div>
-
-            <img src="./assets/images/about-shape-1.svg" width="360" height="420" loading="lazy" alt=""
-              class="shape about-shape-1">
-
-            <img src="./assets/images/about-shape-2.svg" width="371" height="220" loading="lazy" alt=""
-              class="shape about-shape-2">
-
-            <img src="./assets/images/about-shape-3.png" width="722" height="528" loading="lazy" alt=""
-              class="shape about-shape-3">
-
-          </figure>
-
-          <div class="about-content">
-
-            <p class="section-subtitle">About Us</p>
-
-            <h2 class="h2 section-title">
-              Over 10 Years in <span class="span">Distant learning</span> for Skill Development
-            </h2>
-
-            <p class="section-text">
-              Lorem ipsum dolor sit amet consectur adipiscing elit sed eiusmod ex tempor incididunt labore dolore magna
-              aliquaenim ad
-              minim.
-            </p>
-
-            <ul class="about-list">
-
-              <li class="about-item">
-                <ion-icon name="checkmark-done-outline" aria-hidden="true"></ion-icon>
-
-                <span class="span">Expert Trainers</span>
-              </li>
-
-              <li class="about-item">
-                <ion-icon name="checkmark-done-outline" aria-hidden="true"></ion-icon>
-
-                <span class="span">Online Remote Learning</span>
-              </li>
-
-              <li class="about-item">
-                <ion-icon name="checkmark-done-outline" aria-hidden="true"></ion-icon>
-
-                <span class="span">Lifetime Access</span>
-              </li>
-
-            </ul>
-
-            <img src="./assets/images/about-shape-4.svg" width="100" height="100" loading="lazy" alt=""
-              class="shape about-shape-4">
-
-          </div>
-
-        </div>
-      </section>
-
-
-
-
-
       <!-- 
         - #COURSE
       -->
 
       <section class="section course" id="courses" aria-label="course">
         <div class="container">
+          <?php
+          include 'connection.php';
+          ?>
 
           <p class="section-subtitle">Popular Courses</p>
 
@@ -365,41 +156,52 @@
                 </div>
 
                 <div class="card-content">
-
-                  <span class="badge">Beginner</span>
-
-                  <h3 class="h3">
+                  <?php
+                    $query = "SELECT * FROM `data` WHERE id=1";
+                    $result = mysqli_query($conn, $query); 
+                    while ($row = mysqli_fetch_array($result)) {
+                      echo "<span>" . $row['level'] . "</span>";
+                    } 
+                    ?>
+                  <!-- <span class="badge">Beginner</span> -->
+                  <?php
+                      $query = "SELECT * FROM `data` WHERE id=1";
+                      $result = mysqli_query($conn, $query); // Corrected variable name from $sql to $query
+                      while ($row = mysqli_fetch_array($result)) {
+                        echo "<h3>" . $row['course'] . " lesson</h3>";
+                      } 
+                      ?>
+                  <!-- <h3 class="h3">
                     <a href="#" class="card-title">Build Responsive Real- World Websites with HTML and CSS</a>
-                  </h3>
+                  </h3> -->
 
-                  <div class="wrapper">
 
-                    <div class="rating-wrapper">
-                      <ion-icon name="star"></ion-icon>
-                      <ion-icon name="star"></ion-icon>
-                      <ion-icon name="star"></ion-icon>
-                      <ion-icon name="star"></ion-icon>
-                      <ion-icon name="star"></ion-icon>
-                    </div>
-
-                    <p class="rating-text">(5.0/7 Rating)</p>
-
-                  </div>
-
-                  <data class="price" value="29">$29.00</data>
+                  <!-- <data class="price" value="29">$29.00</data> -->
 
                   <ul class="card-meta-list">
 
-                    <li class="card-meta-item">
-                      <ion-icon name="library-outline" aria-hidden="true"></ion-icon>
-
-                      <span class="span">8 Lessons</span>
-                    </li>
+                  <li class="card-meta-item">
+                    <ion-icon name="library-outline" aria-hidden="true"></ion-icon>
+                    <?php
+                      $query = "SELECT * FROM `data` WHERE id=1";
+                      $result = mysqli_query($conn, $query); 
+                      while ($row = mysqli_fetch_array($result)) {
+                        echo "<span>" . $row['lesson'] . " lesson</span>";
+                      } 
+                      ?>
+                  </li>
 
                     <li class="card-meta-item">
                       <ion-icon name="people-outline" aria-hidden="true"></ion-icon>
+                      <?php
+                      $query = "SELECT * FROM `data` WHERE id=1";
+                      $result = mysqli_query($conn, $query); // Corrected variable name from $sql to $query
+                      while ($row = mysqli_fetch_array($result)) {
+                        echo "<span>" . $row['students'] . " Students</span>";
+                      } 
+                      ?>
 
-                      <span class="span">20 Students</span>
+                      <!-- <span class="span">20 Students</span> -->
                     </li>
 
                   </ul>
