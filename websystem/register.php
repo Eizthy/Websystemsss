@@ -63,7 +63,7 @@
   </section>
 
   <?php
-  include_once('connection.php');
+  include ('connection.php');
 
   if(isset($_POST['register']))
   {

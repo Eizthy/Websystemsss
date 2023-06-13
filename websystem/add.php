@@ -1,3 +1,6 @@
+<?php
+session_start();
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -57,7 +60,7 @@
           <li class="navbar-item dropdown">
             <a href="#" class="navbar-link">Admin</a>
             <ul class="dropdown-content">
-              <li><a href="add.php">Add Course</a></li>
+              <li><a href="reset.php">Change Password</a></li>
               <li><a href="index.php">Logout</a></li>
             </ul>
           </li>
@@ -73,68 +76,60 @@
 </header>
 
 <div style="padding: 20px;">
+
 <?php
-include ('connection.php');
-$query = "SELECT * FROM `data`";
-$result = mysqli_query($conn, $query); 
-  while($row = mysqli_fetch_array($result))
+include 'connection.php';
+
   echo "<form>
       <label for='level'>Level:</label>
       <select id='level' name='level' style='font-size: 15px;'>
-      <option value='". $row['level']. "'>" . $row['level'] . "</option>
+      <option value=''></option>
         <option value='beginner'>Beginner</option>
         <option value=intermediate'>Intermediate</option>
         <option value='advanced'>Advanced</option>
       </select>
       <br><br>
       <label for='CourseTitle' style='display: inline-block; margin-right: 10px;'>Course Title:</label>
-      <input type='text' id='CourseTitle name='CourseTitle' value='".$row['course']."' style='width: 300px; border: 1px solid #ccc; display: inline-block;'>
+      <input type='text' id='CourseTitle name='CourseTitle' value='' style='width: 300px; border: 1px solid #ccc; display: inline-block;'>
       <br><br>
       <label for='students' style='display: inline-block; margin-right: 10px;'>Price:</label>
-      <input type='text' id='students' name='students' value='".$row['price']."' style='width: 300px; border: 1px solid #ccc; display: inline-block;'>
+      <input type='text' id='students' name='students' value='' style='width: 300px; border: 1px solid #ccc; display: inline-block;'>
       <br><br>
       <label for='students' style='display: inline-block; margin-right: 10px;'>Lesson:</label>
-      <input type='text' id='students' name='students' value='".$row['lessons']."' style='width: 300px; border: 1px solid #ccc; display: inline-block;'>
+      <input type='text' id='students' name='students' value='' style='width: 300px; border: 1px solid #ccc; display: inline-block;'>
       <br><br>
       <label for='students' style='display: inline-block; margin-right: 10px;'>Student:</label>
-      <input type='text' id='students' name='students' value='".$row['students']."' style='width: 300px; border: 1px solid #ccc; display: inline-block;'>
+      <input type='text' id='students' name='students' value='' style='width: 300px; border: 1px solid #ccc; display: inline-block;'>
       <br><br>
 
       <div style='display: flex; justify-content: flex-start; gap: 10px;'>
-        <button type='button' style='border: 1px solid gray;'>Undo</button>
         <button type='submit' style='border: 1px solid gray;'>Save</button>
-        <button type='button' style='border: 1px solid gray;'>Delete</button>
       </div>
 
   </form>";
-  // Delete news function
-  if(isset($_POST['delete'])) {
-    $id = $_POST['id'];
-    echo '
-    <script>
-      var confirmed = confirm("Are you sure you want to delete this?");
-      if (confirmed) {
-        // Delete the news
-        window.location.href = "delete-news.php?id=' . $id . '";
-        } else {
-        }
-      </script>';
-  } 
-
-  // Update news function
-  if(isset($_POST['update'])) {
+?>
+<!-- Insert news to database script -->
+<?php
+include 'connection.php';
+if ($conn && isset($_POST['submit'])) {
     $level = $_POST['level'];
     $course = $_POST['course'];
     $price = $_POST['price'];
     $lessons = $_POST['lessons'];
     $students = $_POST['students'];
-    $id = $_POST['id'];
-    
-    $sql = "UPDATE `data` SET level='$level', course='$course', price='$price', lessons='$lessons', students='$students' WHERE id=$id";
-    $result = mysqli_query($conn, $sql) or die('Error querying database.');
-    echo '<script> alert("Successfully updated the news."); window.location.href = "admin.php"; </script>';
-  }
-  
+
+    $query = "INSERT INTO `data` (`level`, `course`, `price`, `lessons`, `students`) VALUES ('$level', '$course', '$price', '$lessons', '$students')";
+    $result=mysqli_query($conn,$sql);
+      if($result){ 
+      header('location:index.php');
+      echo"<script>alert('New User Register Success');</script>";   
+      }else{
+          die(mysqli_error($conn)) ;
+      }
+}
+
+
+mysqli_close($conn);
 ?>
 
 </div>
