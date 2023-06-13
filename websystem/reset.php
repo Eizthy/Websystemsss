@@ -21,7 +21,7 @@
     <div class="container py-5 h-100">
       <div class="row d-flex align-items-center justify-content-center h-100">
         <div class="col-md-8 col-lg-7 col-xl-6">
-          <img src="login.png" class="img-fluid" alt="Phone image" height="300px" width="600px">
+          <img src="./assets/images/login.png" class="img-fluid" alt="Phone image" height="300px" width="600px">
         </div>
         <div class="col-md-7 col-lg-5 col-xl-5 offset-xl-1">
     <form action="resetpass.php" method="post">
@@ -56,6 +56,44 @@
       </div>
     </div>
   </section>
+
+  <?php
+  session_start();
+  include_once('connection.php');
+
+  if (isset($_POST['reset'])) {
+      $username = $_POST['username'];
+      $newPassword = md5($_POST['new_password']);
+      $confirmPassword = md5($_POST['confirm_password']);
+
+      // Check if the new password and confirm password match
+      if ($newPassword != $confirmPassword) {
+          echo "<script>alert('New password and confirm password do not match');</script>";
+          exit;
+      }
+
+      // Check if the username exists in the database
+      $checkUsernameQuery = "SELECT * FROM `tbl_user` WHERE `username`='$username'";
+      $checkUsernameResult = mysqli_query($conn, $checkUsernameQuery);
+
+      if (mysqli_num_rows($checkUsernameResult) > 0) {
+          // Update the password for the user
+          $updatePasswordQuery = "UPDATE `tbl_user` SET `password`='$newPassword' WHERE `username`='$username'";
+          $updatePasswordResult = mysqli_query($conn, $updatePasswordQuery);
+
+          if ($updatePasswordResult) {
+              echo "<script>alert('Password reset successful');</script>";
+              // Redirect to the login page or any other page you desire
+              header('location: index1.php');
+              exit;
+          } else {
+              echo "<script>alert('There was an error changing your password. Please try again.');</script>";
+          }
+      } else {
+          echo "<script>alert('Invalid username');</script>";
+      }
+  }
+  ?>
 
   <!-- Bootstrap JavaScript Libraries -->
   <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous">

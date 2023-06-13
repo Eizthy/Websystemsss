@@ -23,28 +23,21 @@
               <div class="row justify-content-center">
               <p class="text-center h1 fw-bold mb-4 mx-1 mx-md-3 mt-3">Sign up</p>
                 <div class="col-md-10 col-lg-6 col-xl-5 order-2 order-lg-1">
-
-                  
-
-                  <form class="mx-1 mx-md-4" action="add.php" method="post">
+                  <form class="mx-1 mx-md-4" action="" method="post">
                     <div class="d-flex flex-row align-items-center mb-4">
                       <i class="fas fa-user fa-lg me-3 fa-fw"></i>
                       <div class="form-outline flex-fill mb-0">
                         <label class="form-label" for="form3Example1c"><i class="bi bi-person-circle"></i> Your Name</label>
                         <input type="text" id="form3Example1c" class="form-control form-control-lg py-3" name="name" autocomplete="off" placeholder="Enter your fullname" style="border-radius:25px ;" required />
-
                       </div>
                     </div>
-
                     <div class="d-flex flex-row align-items-center mb-4">
                       <i class="fas fa-envelope fa-lg me-3 fa-fw"></i>
                       <div class="form-outline flex-fill mb-0">
                         <label class="form-label" for="form3Example3c"><i class="bi bi-envelope-at-fill"></i> Your Email</label>
                         <input type="email" id="form3Example3c" class="form-control form-control-lg py-3" name="username" autocomplete="off" placeholder="Enter your username" style="border-radius:25px ;" required />
-
                       </div>
                     </div>
-
                     <div class="d-flex flex-row align-items-center mb-4">
                       <i class="fas fa-lock fa-lg me-3 fa-fw"></i>
                       <div class="form-outline flex-fill mb-0">
@@ -54,16 +47,12 @@
                     </div>
                     <div class="d-flex justify-content-center mx-4 mb-3 mb-lg-4">
                       <input type="submit" value="Register" name="register" class="btn btn-warning btn-lg text-light my-2 py-3" style="width:100% ; border-radius: 30px; font-weight:600;" style="border-radius:25px ;" />
-
                     </div>
-
                   </form>
                   <p align="center">I have already account. <a href="login.php" class="text-warning" style="font-weight:600; text-decoration:none;">Login.</a></p>
                 </div>
                 <div class="col-md-10 col-lg-6 col-xl-7 d-flex align-items-center order-1 order-lg-2">
-
-                  <img src="signup.png" class="img-fluid" alt="Sample image" height="300px" width="500px">
-
+                  <img src="./assets/images/signup.png" class="img-fluid" alt="Sample image" height="300px" width="500px">
                 </div>
               </div>
             </div>
@@ -72,6 +61,27 @@
       </div>
     </div>
   </section>
+
+  <?php
+  include_once('connection.php');
+
+  if(isset($_POST['register']))
+  {
+      $name=$_POST['name'];
+      $username=$_POST['username'];
+      $pass=md5($_POST['password']);
+      $isAdmin = 0;
+
+      $sql   ="INSERT INTO `tbl_user`(`name`, `username`, `password`, `isAdmin`) VALUES ('$name','$username','$pass', '$isAdmin')";
+      $result=mysqli_query($conn,$sql);
+      if($result){ 
+      header('location:index.php');
+      echo"<script>alert('New User Register Success');</script>";   
+      }else{
+          die(mysqli_error($conn)) ;
+      }
+    }
+  ?>
 
   <!-- Bootstrap JavaScript Libraries -->
   <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous">
