@@ -30,10 +30,10 @@
 
   <header class="header" data-header>
     <div class="container">
-      <img src="./assets/images/logo.svg" width="162" height="50" alt="EduWeb logo">
+      <img src="./assets/images/learnopia.png" width="190" height="70" alt="EduWeb logo">
       <nav class="navbar" data-navbar>
         <div class="wrapper">
-          <img src="./assets/images/logo.svg" width="162" height="50" alt="EduWeb logo">
+          <img src="./assets/images/learnopia.png" width="162" height="50" alt="EduWeb logo">
           <button class="nav-close-btn" aria-label="close menu" data-nav-toggler>
             <ion-icon name="close-outline" aria-hidden="true"></ion-icon>
           </button>
@@ -627,7 +627,7 @@
         <div class="footer-brand">
 
           <a href="#" class="logo">
-            <img src="./assets/images/logo-light.svg" width="162" height="50" alt="EduWeb logo">
+            <img src="./assets/images/learnopia.png" width="190" height="70" alt="EduWeb logo">
           </a>
 
           <p class="footer-brand-text">
