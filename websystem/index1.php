@@ -234,67 +234,61 @@
 
               </div>
             </li>
+            <div class="course-card">
+              <figure class="card-banner img-holder" style="--width: 370; --height: 220;">
+                <img src="./assets/images/course-3.jpg" width="370" height="220" loading="lazy"
+                  alt="The Complete Camtasia Course for Content Creators" class="img-cover">
+              </figure>
 
-            <li>
-              <div class="course-card">
+              <div class="abs-badge">
+                <ion-icon name="time-outline" aria-hidden="true"></ion-icon>
 
-                <figure class="card-banner img-holder" style="--width: 370; --height: 220;">
-                  <img src="./assets/images/course-3.jpg" width="370" height="220" loading="lazy"
-                    alt="The Complete Camtasia Course for Content Creators" class="img-cover">
-                </figure>
+                <span class="span">3 Weeks</span>
+              </div>
 
-                <div class="abs-badge">
-                  <ion-icon name="time-outline" aria-hidden="true"></ion-icon>
+              <div class="card-content">
 
-                  <span class="span">3 Weeks</span>
-                </div>
+                <span class="badge">Intermediate</span>
 
-                <div class="card-content">
+                <h3 class="h3">
+                  <a href="#" class="card-title">The Complete Camtasia Course for Content Creators</a>
+                </h3>
 
-                  <span class="badge">Intermediate</span>
+                <div class="wrapper">
 
-                  <h3 class="h3">
-                    <a href="#" class="card-title">The Complete Camtasia Course for Content Creators</a>
-                  </h3>
-
-                  <div class="wrapper">
-
-                    <div class="rating-wrapper">
-                      <ion-icon name="star"></ion-icon>
-                      <ion-icon name="star"></ion-icon>
-                      <ion-icon name="star"></ion-icon>
-                      <ion-icon name="star"></ion-icon>
-                      <ion-icon name="star"></ion-icon>
-                    </div>
-
-                    <p class="rating-text">(4.9 /7 Rating)</p>
-
+                  <div class="rating-wrapper">
+                    <ion-icon name="star"></ion-icon>
+                    <ion-icon name="star"></ion-icon>
+                    <ion-icon name="star"></ion-icon>
+                    <ion-icon name="star"></ion-icon>
+                    <ion-icon name="star"></ion-icon>
                   </div>
 
-                  <data class="price" value="49" style="color: red;">₱35.00</data>
-
-
-                  <ul class="card-meta-list">
-
-                    <li class="card-meta-item">
-                      <ion-icon name="library-outline" aria-hidden="true"></ion-icon>
-
-                      <span class="span">13 Lessons</span>
-                    </li>
-
-                    <li class="card-meta-item">
-                      <ion-icon name="people-outline" aria-hidden="true"></ion-icon>
-
-                      <span class="span">18 Students</span>
-                    </li>
-
-                  </ul>
+                  <p class="rating-text">(4.9 /7 Rating)</p>
 
                 </div>
 
-              </div>
-            </li>
+                <data class="price" value="49" style="color: red;">₱35.00</data>
+                <ul class="card-meta-list">
 
+                  <li class="card-meta-item">
+                    <ion-icon name="library-outline" aria-hidden="true"></ion-icon>
+
+                    <span class="span">13 Lessons</span>
+                  </li>
+
+                  <li class="card-meta-item">
+                    <ion-icon name="people-outline" aria-hidden="true"></ion-icon>
+
+                    <span class="span">18 Students</span>
+                  </li>
+
+                </ul>
+
+              </div>
+
+              </div>
+              </li>               
 
             <li>
               <div class="course-card">
@@ -354,6 +348,8 @@
 
               </div>
             </li>
+
+            <li>
 
           </ul>
 
