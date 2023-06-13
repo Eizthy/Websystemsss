@@ -514,41 +514,6 @@ body {
   padding: 4px 16px;
 }
 
-/* .dropdown {
-  position: relative;
-  display: inline-block;
-}
-
-.dropdown-content {
-  display: none;
-  position: absolute;
-  background-color: #f9f9f9;
-  min-width: 160px;
-  padding: 8px 0;
-  z-index: 1;
-}
-
-.dropdown:hover .dropdown-content {
-  display: block;
-}
-
-.dropdown-content ul {
-  list-style-type: none;
-  margin: 0;
-  padding: 0;
-}
-
-.dropdown-content li {
-  padding: 4px 16px;
-}
-
-.dropdown-divider {
-  border-top: 1px solid #ccc;
-  margin: 4px 0;
-} */
-
-
-
 
 /*-----------------------------------*\
   #HERO
@@ -668,7 +633,7 @@ body {
   font-weight: var(--fw-500);
 }
 
-.course-card .price {
+.course-card .data {
   color: var(--radical-red);
   font-family: var(--ff-league_spartan);
   font-size: var(--fs-4);

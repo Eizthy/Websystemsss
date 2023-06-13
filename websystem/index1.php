@@ -29,49 +29,49 @@
   -->
 
   <header class="header" data-header>
-  <div class="container">
-    <img src="./assets/images/logo.svg" width="162" height="50" alt="EduWeb logo">
-    <nav class="navbar" data-navbar>
-      <div class="wrapper">
-        <img src="./assets/images/logo.svg" width="162" height="50" alt="EduWeb logo">
-        <button class="nav-close-btn" aria-label="close menu" data-nav-toggler>
-          <ion-icon name="close-outline" aria-hidden="true"></ion-icon>
+    <div class="container">
+      <img src="./assets/images/logo.svg" width="162" height="50" alt="EduWeb logo">
+      <nav class="navbar" data-navbar>
+        <div class="wrapper">
+          <img src="./assets/images/logo.svg" width="162" height="50" alt="EduWeb logo">
+          <button class="nav-close-btn" aria-label="close menu" data-nav-toggler>
+            <ion-icon name="close-outline" aria-hidden="true"></ion-icon>
+          </button>
+        </div>
+        <ul class="navbar-list">
+          <li class="navbar-item">
+            <a href="#home" class="navbar-link" data-nav-link>Home</a>
+          </li>
+          <li class="navbar-item">
+            <a href="#about" class="navbar-link" data-nav-link>About</a>
+          </li>
+          <li class="navbar-item">
+            <a href="#courses" class="navbar-link" data-nav-link>Courses</a>
+          </li>
+          <li class="navbar-item">
+            <a href="#blog" class="navbar-link" data-nav-link>Blog</a>
+          </li>
+          <li class="navbar-item">
+            <a href="#" class="navbar-link" data-nav-link>Contact</a>
+          </li>
+          <li class="navbar-item dropdown">
+            <a href="#" class="navbar-link">Profile</a>
+            <ul class="dropdown-content">
+              <li><a href="reset.php">Change Password</a></li>
+              <li><a href="index.php">Logout</a></li>
+            </ul>
+          </li>
+        </ul>
+      </nav>
+      <div class="header-actions">
+
+        <button class="header-action-btn" aria-label="open menu" data-nav-toggler>
+          <ion-icon name="menu-outline" aria-hidden="true"></ion-icon>
         </button>
       </div>
-      <ul class="navbar-list">
-        <li class="navbar-item">
-          <a href="#home" class="navbar-link" data-nav-link>Home</a>
-        </li>
-        <li class="navbar-item">
-          <a href="#about" class="navbar-link" data-nav-link>About</a>
-        </li>
-        <li class="navbar-item">
-          <a href="#courses" class="navbar-link" data-nav-link>Courses</a>
-        </li>
-        <li class="navbar-item">
-          <a href="#blog" class="navbar-link" data-nav-link>Blog</a>
-        </li>
-        <li class="navbar-item">
-          <a href="#" class="navbar-link" data-nav-link>Contact</a>
-        </li>
-        <li class="navbar-item dropdown">
-          <a href="#" class="navbar-link">Profile</a>
-          <ul class="dropdown-content">
-            <li><a href="reset.php">Change Password</a></li>
-            <li><a href="index.php">Logout</a></li>
-          </ul>
-        </li>
-      </ul>
-    </nav>
-    <div class="header-actions">
-
-      <button class="header-action-btn" aria-label="open menu" data-nav-toggler>
-        <ion-icon name="menu-outline" aria-hidden="true"></ion-icon>
-      </button>
+      <div class="overlay" data-nav-toggler data-overlay></div>
     </div>
-    <div class="overlay" data-nav-toggler data-overlay></div>
-  </div>
-</header>
+  </header>
 
 
 
@@ -160,7 +160,7 @@
                     $query = "SELECT * FROM `data` WHERE id=1";
                     $result = mysqli_query($conn, $query); 
                     while ($row = mysqli_fetch_array($result)) {
-                      echo "<span>" . $row['level'] . "</span>";
+                      echo "<span class=\"badge\">" . $row['level'] . "</span>";
                     } 
                     ?>
                   <!-- <span class="badge">Beginner</span> -->
@@ -168,7 +168,7 @@
                       $query = "SELECT * FROM `data` WHERE id=1";
                       $result = mysqli_query($conn, $query); 
                       while ($row = mysqli_fetch_array($result)) {
-                        echo "<h3>" . $row['course'] . " lesson</h3>";
+                        echo '<h3 class="h3"><a href="#" class="card-title">' . $row['course'] . ' lesson</a></h3>';
                       } 
                       ?>
                   <!-- <h3 class="h3">
@@ -179,7 +179,7 @@
                       $query = "SELECT * FROM `data` WHERE id=1";
                       $result = mysqli_query($conn, $query); 
                       while ($row = mysqli_fetch_array($result)) {
-                        echo "<data> P" . $row['price'] . ".00</data>";
+                        echo "<data class=\"price\"> P" . $row['price'] . ".00</data>";
                       } 
                     ?>
 
@@ -194,7 +194,7 @@
                       $query = "SELECT * FROM `data` WHERE id=1";
                       $result = mysqli_query($conn, $query); 
                       while ($row = mysqli_fetch_array($result)) {
-                        echo "<span>" . $row['lessons'] . " lesson</span>";
+                        echo "<span class=\"span\">" . $row['lessons'] . " lesson</span>";
                       } 
                     ?>
                   </li>
@@ -205,7 +205,7 @@
                       $query = "SELECT * FROM `data` WHERE id=1";
                       $result = mysqli_query($conn, $query); // Corrected variable name from $sql to $query
                       while ($row = mysqli_fetch_array($result)) {
-                        echo "<span>" . $row['students'] . " Students</span>";
+                        echo "<span class=\"span\">" . $row['students'] . " Students</span>";
                       } 
                       ?>
 
@@ -242,14 +242,6 @@
                   </h3>
 
                   <div class="wrapper">
-
-                    <div class="rating-wrapper">
-                      <ion-icon name="star"></ion-icon>
-                      <ion-icon name="star"></ion-icon>
-                      <ion-icon name="star"></ion-icon>
-                      <ion-icon name="star"></ion-icon>
-                      <ion-icon name="star"></ion-icon>
-                    </div>
 
                     <p class="rating-text">(4.5 /9 Rating)</p>
 
