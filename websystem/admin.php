@@ -9,6 +9,8 @@
   <title>LearnOpia - The Best Program to Enroll for Exchange</title>
   
   <link rel="stylesheet" href="./assets/css/style.css">
+  <link rel="stylesheet" href="./assets/css/admin.css">
+
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -66,120 +68,124 @@
 </div>
 </header>
 
-<div style="padding: 20px;">
-<?php
-include ('connection.php');
+<div class="admin-container">
+    <div class="admin-content" style="padding: 20px;">
+    <?php
+    include ('connection.php');
 
-$originalValues = array();
+    $originalValues = array();
 
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-  // Delete news function
-  if (isset($_POST['delete'])) {
-    $id = $_POST['id'];
+    if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+      // Delete news function
+      if (isset($_POST['delete'])) {
+        $id = $_POST['id'];
 
-    // Update the database values to 'N/A'
-    $sql = "UPDATE `data` SET level='N/A', course='N/A', price='N/A', lessons='N/A', students='N/A' WHERE id=$id";
-    $result = mysqli_query($conn, $sql) or die('Error querying database.');
+        // Update the database values to 'N/A'
+        $sql = "UPDATE `data` SET level='N/A', course='N/A', price='N/A', lessons='N/A', students='N/A' WHERE id=$id";
+        $result = mysqli_query($conn, $sql) or die('Error querying database.');
 
-    if ($result) {
-      echo '<script> alert("Successfully deleted the data."); window.location.href = "admin.php"; </script>';
-    }
-  }
+        if ($result) {
+          echo '<script> alert("Successfully deleted the data."); window.location.href = "admin.php"; </script>';
+        }
+      }
 
-  // Update or insert data function
-  if (isset($_POST['update'])) {
-    $level = $_POST['level'];
-    $course = $_POST['course'];
-    $price = $_POST['price'];
-    $lessons = $_POST['lessons'];
-    $students = $_POST['students'];
-    $id = $_POST['id'];
+      // Update or insert data function
+      if (isset($_POST['update'])) {
+        $level = $_POST['level'];
+        $course = $_POST['course'];
+        $price = $_POST['price'];
+        $lessons = $_POST['lessons'];
+        $students = $_POST['students'];
+        $id = $_POST['id'];
 
-    if ($id != '') {
-      // Update existing data
-      $query = "SELECT * FROM `data` WHERE id=$id";
-      $result = mysqli_query($conn, $query);
-      $row = mysqli_fetch_array($result);
-      $originalValues[$id] = $row;
+        if ($id != '') {
+          // Update existing data
+          $query = "SELECT * FROM `data` WHERE id=$id";
+          $result = mysqli_query($conn, $query);
+          $row = mysqli_fetch_array($result);
+          $originalValues[$id] = $row;
 
-      $sql = "UPDATE `data` SET level='$level', course='$course', price='$price', lessons='$lessons', students='$students' WHERE id=$id";
-    } else {
-      // Insert new data
-      $sql = "INSERT INTO `data` (level, course, price, lessons, students) VALUES ('$level', '$course', '$price', '$lessons', '$students')";
-    }
+          $sql = "UPDATE `data` SET level='$level', course='$course', price='$price', lessons='$lessons', students='$students' WHERE id=$id";
+        } else {
+          // Insert new data
+          $sql = "INSERT INTO `data` (level, course, price, lessons, students) VALUES ('$level', '$course', '$price', '$lessons', '$students')";
+        }
 
-    $result = mysqli_query($conn, $sql) or die('Error querying database.');
+        $result = mysqli_query($conn, $sql) or die('Error querying database.');
 
-    if ($result) {
-      if ($id != '') {
-        echo '<script> alert("Successfully updated the data."); window.location.href = "admin.php"; </script>';
-      } else {
-        echo '<script> alert("Successfully inserted new data."); window.location.href = "admin.php"; </script>';
+        if ($result) {
+          if ($id != '') {
+            echo '<script> alert("Successfully updated the data."); window.location.href = "admin.php"; </script>';
+          } else {
+            echo '<script> alert("Successfully inserted new data."); window.location.href = "admin.php"; </script>';
+          }
+        }
       }
     }
-  }
-}
 
-if (isset($_POST['undo'])) {
-  $id = $_POST['id'];
+    if (isset($_POST['undo'])) {
+      $id = $_POST['id'];
 
-  // Check if original values exist for the given ID
-  if (isset($originalValues[$id])) {
-    // Retrieve the original values
-    $originalRow = $originalValues[$id];
+      // Check if original values exist for the given ID
+      if (isset($originalValues[$id])) {
+        // Retrieve the original values
+        $originalRow = $originalValues[$id];
 
-    // Update the database with the original values
-    $sql = "UPDATE `data` SET level='" . $originalRow['level'] . "', course='" . $originalRow['course'] . "', price='" . $originalRow['price'] . "', lessons='" . $originalRow['lessons'] . "', students='" . $originalRow['students'] . "' WHERE id=$id";
-    $result = mysqli_query($conn, $sql) or die('Error querying database.');
+        // Update the database with the original values
+        $sql = "UPDATE `data` SET level='" . $originalRow['level'] . "', course='" . $originalRow['course'] . "', price='" . $originalRow['price'] . "', lessons='" . $originalRow['lessons'] . "', students='" . $originalRow['students'] . "' WHERE id=$id";
+        $result = mysqli_query($conn, $sql) or die('Error querying database.');
 
-    if ($result) {
-      echo '<script> alert("Changes undone."); window.location.href = "admin.php"; </script>';
+        if ($result) {
+          echo '<script> alert("Changes undone."); window.location.href = "admin.php"; </script>';
+        }
+      }
     }
-  }
-}
-  
+      
 
-$query = "SELECT * FROM `data`";
-$result = mysqli_query($conn, $query); 
+    $query = "SELECT * FROM `data`";
+    $result = mysqli_query($conn, $query); 
 
-while ($row = mysqli_fetch_array($result)) {
-  echo "<form method='POST' action='admin.php'> <!-- Update the action attribute to point to 'admin.php' -->
-      <label for='level'>Level:</label>
-      <select id='level' name='level' style='font-size: 15px;'>
-        <option value='". $row['level']. "'>" . $row['level'] . "</option>
-        <option value='Beginner'>Beginner</option>
-        <option value='Intermediate'>Intermediate</option>
-        <option value='Advanced'>Advanced</option>
-      </select>
-      <br><br>
-      <label for='CourseTitle' style='display: inline-block; margin-right: 10px;'>Course Title:</label>
-      <input type='text' id='CourseTitle' name='course' value='".$row['course']."' style='width: 300px; border: 1px solid #ccc; display: inline-block;'>
-      <br><br>
-      <label for='price' style='display: inline-block; margin-right: 10px;'>Price:</label>
-      <input type='text' id='price' name='price' value='".$row['price']."' style='width: 300px; border: 1px solid #ccc; display: inline-block;'>
-      <br><br>
-      <label for='lessons' style='display: inline-block; margin-right: 10px;'>Lesson:</label>
-      <input type='text' id='lessons' name='lessons' value='".$row['lessons']."' style='width: 300px; border: 1px solid #ccc; display: inline-block;'>
-      <br><br>
-      <label for='students' style='display: inline-block; margin-right: 10px;'>Student:</label>
-      <input type='text' id='students' name='students' value='".$row['students']."' style='width: 300px; border: 1px solid #ccc; display: inline-block;'>
-      <br><br>
+    while ($row = mysqli_fetch_array($result)) {
+      echo "<form method='POST' action='admin.php'> <!-- Update the action attribute to point to 'admin.php' -->
+          <label for='level'>Level:</label>
+          <select id='level' name='level' style='font-size: 15px;'>
+            <option value='". $row['level']. "'>" . $row['level'] . "</option>
+            <option value='Beginner'>Beginner</option>
+            <option value='Intermediate'>Intermediate</option>
+            <option value='Advanced'>Advanced</option>
+          </select>
+          <br><br>
+          <label for='CourseTitle' style='display: inline-block; margin-right: 10px;'>Course Title:</label>
+          <input type='text' id='CourseTitle' name='course' value='".$row['course']."' style='width: 300px; border: 1px solid #ccc; display: inline-block;'>
+          <br><br>
+          <label for='price' style='display: inline-block; margin-right: 10px;'>Price:</label>
+          <input type='text' id='price' name='price' value='".$row['price']."' style='width: 300px; border: 1px solid #ccc; display: inline-block;'>
+          <br><br>
+          <label for='lessons' style='display: inline-block; margin-right: 10px;'>Lesson:</label>
+          <input type='text' id='lessons' name='lessons' value='".$row['lessons']."' style='width: 300px; border: 1px solid #ccc; display: inline-block;'>
+          <br><br>
+          <label for='students' style='display: inline-block; margin-right: 10px;'>Student:</label>
+          <input type='text' id='students' name='students' value='".$row['students']."' style='width: 300px; border: 1px solid #ccc; display: inline-block;'>
+          <br><br>
 
-      <div style='display: flex; justify-content: flex-start; gap: 10px;'>
-        <button type='submit' name='undo' style='border: 1px solid gray;'>Undo</button>
-        <button type='submit' name='update' style='border: 1px solid gray;'>Save</button>
-        <button type='submit' name='delete' style='border: 1px solid gray;'>Delete</button>
+          <div style='display: flex; justify-content: flex-start; gap: 10px;'>
+        <button type='submit' name='undo' style='border: 1px solid gray; background-color: #f2f2f2; color: black;'>Undo</button>
+        <button type='submit' name='update' style='border: 1px solid gray; background-color: #4CAF50; color: white;'>Save</button>
+        <button type='submit' name='delete' style='border: 1px solid gray; background-color: #f44336; color: white;'>Delete</button>
         <input type='hidden' name='id' value='".$row['id']."'>
       </div>
 
-  </form>";
-}
-?>
+      <div class='black-line' style='height: 1px; background-color: black; margin: 10px 0;'></div>
+
+      </form>";
+    }
+    ?>
+    </div>
+    </div>
+
 </div>
 
-
-</div>
-
+<div>
   <footer>
     <?php include 'footer.php'; ?>
   </footer>
@@ -190,8 +196,6 @@ while ($row = mysqli_fetch_array($result)) {
   <a href="#top" class="back-top-btn" aria-label="back top top" data-back-top-btn>
     <ion-icon name="chevron-up" aria-hidden="true"></ion-icon>
   </a>
-
-
 
 
 

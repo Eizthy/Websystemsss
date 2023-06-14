@@ -12,6 +12,8 @@ session_start();
   <title>LearnOpia - The Best Program to Enroll for Exchange</title>
   
   <link rel="stylesheet" href="./assets/css/style.css">
+  <link rel="stylesheet" href="./assets/css/admin.css">
+
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -75,6 +77,8 @@ session_start();
 </div>
 </header>
 
+<div class="admin-container">
+    <div class="admin-content" style="padding: 20px;">
 <div style="padding: 20px;">
 <?php
 include 'connection.php';
@@ -128,6 +132,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 </form>
 </div>
 
+</div>
+</div>
 
 
 
