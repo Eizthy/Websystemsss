@@ -43,13 +43,7 @@
             <a href="#home" class="navbar-link" data-nav-link>Home</a>
           </li>
           <li class="navbar-item">
-            <a href="#about" class="navbar-link" data-nav-link>About</a>
-          </li>
-          <li class="navbar-item">
             <a href="#courses" class="navbar-link" data-nav-link>Courses</a>
-          </li>
-          <li class="navbar-item">
-            <a href="#blog" class="navbar-link" data-nav-link>Blog</a>
           </li>
           <li class="navbar-item">
             <a href="#" class="navbar-link" data-nav-link>Contact</a>
@@ -75,40 +69,10 @@
 <div style="padding: 20px;">
 <?php
 include ('connection.php');
-$query = "SELECT * FROM `data`";
-$result = mysqli_query($conn, $query); 
-  while($row = mysqli_fetch_array($result))
-  echo "<form>
-      <label for='level'>Level:</label>
-      <select id='level' name='level' style='font-size: 15px;'>
-      <option value='". $row['level']. "'>" . $row['level'] . "</option>
-        <option value='beginner'>Beginner</option>
-        <option value=intermediate'>Intermediate</option>
-        <option value='advanced'>Advanced</option>
-      </select>
-      <br><br>
-      <label for='CourseTitle' style='display: inline-block; margin-right: 10px;'>Course Title:</label>
-      <input type='text' id='CourseTitle name='CourseTitle' value='".$row['course']."' style='width: 300px; border: 1px solid #ccc; display: inline-block;'>
-      <br><br>
-      <label for='students' style='display: inline-block; margin-right: 10px;'>Price:</label>
-      <input type='text' id='students' name='students' value='".$row['price']."' style='width: 300px; border: 1px solid #ccc; display: inline-block;'>
-      <br><br>
-      <label for='students' style='display: inline-block; margin-right: 10px;'>Lesson:</label>
-      <input type='text' id='students' name='students' value='".$row['lessons']."' style='width: 300px; border: 1px solid #ccc; display: inline-block;'>
-      <br><br>
-      <label for='students' style='display: inline-block; margin-right: 10px;'>Student:</label>
-      <input type='text' id='students' name='students' value='".$row['students']."' style='width: 300px; border: 1px solid #ccc; display: inline-block;'>
-      <br><br>
 
-      <div style='display: flex; justify-content: flex-start; gap: 10px;'>
-        <button type='button' style='border: 1px solid gray;'>Undo</button>
-        <button type='submit' style='border: 1px solid gray;'>Save</button>
-        <button type='button' style='border: 1px solid gray;'>Delete</button>
-      </div>
-
-  </form>";
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
   // Delete news function
-  if(isset($_POST['delete'])) {
+  if (isset($_POST['delete'])) {
     $id = $_POST['id'];
     echo '
     <script>
@@ -116,13 +80,13 @@ $result = mysqli_query($conn, $query);
       if (confirmed) {
         // Delete the news
         window.location.href = "delete-news.php?id=' . $id . '";
-        } else {
-        }
-      </script>';
+      } else {
+      }
+    </script>';
   } 
 
   // Update news function
-  if(isset($_POST['update'])) {
+  if (isset($_POST['update'])) {
     $level = $_POST['level'];
     $course = $_POST['course'];
     $price = $_POST['price'];
@@ -132,9 +96,48 @@ $result = mysqli_query($conn, $query);
     
     $sql = "UPDATE `data` SET level='$level', course='$course', price='$price', lessons='$lessons', students='$students' WHERE id=$id";
     $result = mysqli_query($conn, $sql) or die('Error querying database.');
-    echo '<script> alert("Successfully updated the news."); window.location.href = "admin.php"; </script>';
+    
+    if ($result) {
+      echo '<script> alert("Successfully updated the news."); window.location.href = "admin.php"; </script>';
+    }
   }
-  
+}
+
+$query = "SELECT * FROM `data`";
+$result = mysqli_query($conn, $query); 
+
+while ($row = mysqli_fetch_array($result)) {
+  echo "<form method='POST' action='admin.php'> <!-- Update the action attribute to point to 'admin.php' -->
+      <label for='level'>Level:</label>
+      <select id='level' name='level' style='font-size: 15px;'>
+        <option value='". $row['level']. "'>" . $row['level'] . "</option>
+        <option value='Beginner'>Beginner</option>
+        <option value='Intermediate'>Intermediate</option>
+        <option value='Advanced'>Advanced</option>
+      </select>
+      <br><br>
+      <label for='CourseTitle' style='display: inline-block; margin-right: 10px;'>Course Title:</label>
+      <input type='text' id='CourseTitle' name='course' value='".$row['course']."' style='width: 300px; border: 1px solid #ccc; display: inline-block;'>
+      <br><br>
+      <label for='price' style='display: inline-block; margin-right: 10px;'>Price:</label>
+      <input type='text' id='price' name='price' value='".$row['price']."' style='width: 300px; border: 1px solid #ccc; display: inline-block;'>
+      <br><br>
+      <label for='lessons' style='display: inline-block; margin-right: 10px;'>Lesson:</label>
+      <input type='text' id='lessons' name='lessons' value='".$row['lessons']."' style='width: 300px; border: 1px solid #ccc; display: inline-block;'>
+      <br><br>
+      <label for='students' style='display: inline-block; margin-right: 10px;'>Student:</label>
+      <input type='text' id='students' name='students' value='".$row['students']."' style='width: 300px; border: 1px solid #ccc; display: inline-block;'>
+      <br><br>
+
+      <div style='display: flex; justify-content: flex-start; gap: 10px;'>
+        <button type='button' style='border: 1px solid gray;'>Undo</button>
+        <button type='submit' name='update' style='border: 1px solid gray;'>Save</button>
+        <button type='submit' name='delete' style='border: 1px solid gray;'>Delete</button>
+        <input type='hidden' name='id' value='".$row['id']."'>
+      </div>
+
+  </form>";
+}
 ?>
 
 </div>

@@ -178,7 +178,7 @@
                       $query = "SELECT * FROM `data` WHERE id=1";
                       $result = mysqli_query($conn, $query); 
                       while ($row = mysqli_fetch_array($result)) {
-                        echo '<h3 class="h3"><a href="#" class="card-title">' . $row['course'] . ' Lesson for Beginners</a></h3>';
+                        echo '<h3 class="h3"><a href="#" class="card-title">' . $row['course'] . ' </a></h3>';
                       } 
                       ?>
                   <!-- <h3 class="h3">
@@ -205,8 +205,6 @@
                       echo "<data class=\"price\" style=\"color: red;\"> ₱" . $row['price'] . ".00</data>";
                     } 
                   ?>
-
-
 
                   <!-- <data class="price" value="29">$29.00</data> -->
 
