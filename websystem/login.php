@@ -1,3 +1,6 @@
+<?php 
+session_start(); 
+?>
 <!doctype html>
 <html lang="en">
 
@@ -35,64 +38,80 @@
                     <!-- Password input -->
                     <div class="form-outline mb-4">
                         <label class="form-label" for="form1Example23"><i class="bi bi-chat-left-dots-fill"></i> Password</label>
-                        <input type="password" id="form1Example23" class="form-control form-control-lg py-3" name="password" autocomplete="off" placeholder="Enter your password" style="border-radius:25px ;" required />
+                        <input name="pass" type="password" id="form1Example23" class="form-control form-control-lg py-3" name="password" autocomplete="off" placeholder="Enter your password" style="border-radius:25px ;" required />
 
                     </div>
 
 
                     <!-- Submit button -->
-                    <!-- <button type="submit" class="btn btn-primary btn-lg">Login in</button> -->
                     <div class="d-flex justify-content-center mx-4 mb-3 mb-lg-4">
                         <input type="submit" value="Sign-in" name="login" class="btn btn-warning btn-lg text-light my-2 py-3" style="width:100% ; border-radius: 30px; font-weight:600;" />
                     </div>
+
+                    <p align="center">I forgot my password. <a href="reset.php" class="text-warning" style="font-weight:600;text-decoration:none;">Reset.</a></p>
+                    <p align="center">I don't have any account. <a href="register.php" class="text-warning" style="font-weight:600;text-decoration:none;">Register Here.</a></p>
+
+                    <!-- loop that check any existing information -->
+                    <?php
+                    include ('connection.php');
+
+                    if (isset($_POST['login'])) {
+                        $username = $_POST['username'];
+                        $password = $_POST['pass'];
+                    
+                        if (empty($username) || empty($password)) {
+                            echo "<script>alert('Please fill in both username and password.');</script>";
+                            exit;
+                        } else {
+                            $hashedPassword = md5($password);
+                            $sql = "SELECT username, password, isAdmin FROM tbl_user WHERE username = ?";
+                            $stmt = mysqli_stmt_init($conn);
+                    
+                            if (mysqli_stmt_prepare($stmt, $sql)) {
+                                mysqli_stmt_bind_param($stmt, 's', $username);
+                                mysqli_stmt_execute($stmt);
+                                mysqli_stmt_store_result($stmt);
+                            }
+                    
+                            if (mysqli_stmt_num_rows($stmt) > 0) {
+                                mysqli_stmt_bind_result($stmt, $Username, $userPassword, $userLevel);
+                                mysqli_stmt_fetch($stmt);
+                    
+                                if (md5($password) == $userPassword) {
+                                    if ($userLevel == 1) {
+                                        $admin = true;
+                                    } else {
+                                        $admin = false;
+                                    }
+                                    
+                                    $_SESSION['username'] = $Username;
+                                    $_SESSION['isAdmin'] = $userLevel;
+                                    header('Location: index.php');
+                                    exit;
+                                } else {
+                                    echo "<script>alert('Invalid password.');</script>";
+                                    header('Location: login.php');
+                                    exit;
+                                }
+                            } else {
+                                echo "<script>alert('Invalid username.');</script>";
+                                header('Location: login.php');
+                                exit;
+                            }
+                        }
+                    }                                        
+                    ?>
+                    
                 </form><br>
-                <p align="center">I forgot my password. <a href="reset.php" class="text-warning" style="font-weight:600;text-decoration:none;">Reset.</a></p>
-                <p align="center">I don't have any account. <a href="register.php" class="text-warning" style="font-weight:600;text-decoration:none;">Register Here.</a></p>
+                
             </div>
         </div>
     </div>
 </section>
 
-<?php
-// session_start();
-include ('connection.php');
-
-if (isset($_POST['login'])) {
-
-    $username = $_POST['username'];
-    $password = md5($_POST['password']);
-
-    $sql = "SELECT * FROM `tbl_user` WHERE `username`='$username' AND `password`='$password'";
-    $result = mysqli_query($conn, $sql);
-
-    if (empty($_POST['username']) && empty($_POST['password'])) {
-        echo "<script>alert('Please Fill Username and Password');</script>";
-        exit;
-    } elseif (empty($_POST['password'])) {
-        echo "<script>alert('Please Fill Password');</script>";
-        exit;
-    } elseif (empty($_POST['username'])) {
-        echo "<script>alert('Please Fill Username');</script>";
-        exit;
-    } else {
-        if (mysqli_num_rows($result) > 0) {
-            $row = mysqli_fetch_array($result);
-            if ($row["isAdmin"] == 1) {
-                header('location:admin.php');
-            }else{
-                header('location:index.php');
-            }
-        } else {
-            echo "<script>alert('Invalid Username or Password');</script>";
-            return "login.php";
-        }
-    }
-}
-?>
 
 
-
-  <!-- Bootstrap JavaScript Libraries -->
+ <!-- Bootstrap JavaScript Libraries -->
   <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.min.js" integrity="sha384-7VPbUDkoPSGFnVtYi0QogXtr74QeVeeIs99Qfg5YCF+TidwNdjvaKZX19NZ/e6oz" crossorigin="anonymous"></script>
 </body>

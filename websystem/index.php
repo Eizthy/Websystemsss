@@ -1,3 +1,6 @@
+<?php 
+session_start(); // Start the session
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -28,71 +31,88 @@
     - #HEADER
   -->
 
-  <header class="header" data-header>
-    <div class="container">
+  <?php
+  if (isset($_POST['logout'])) {
+    // Perform logout actions here, where destroying the session
+    session_destroy();
+    // Redirect the user to the back to the home page
+    header("Location: index.php");
+    exit();
+  }
+?>
 
-    <img src="./assets/images/learnopia.png" width="190" height="70" alt="EduWeb logo">
-
-      <nav class="navbar" data-navbar>
-
-        <div class="wrapper">
-          <img src="./assets/images/logo.svg" width="162" height="50" alt="EduWeb logo">
-          <button class="nav-close-btn" aria-label="close menu" data-nav-toggler>
-            <ion-icon name="close-outline" aria-hidden="true"></ion-icon>
-          </button>
-        </div>
-
-        <ul class="navbar-list">
-
-          <li class="navbar-item">
-            <a href="#home" class="navbar-link" data-nav-link>Home</a>
-          </li>
-
-          <li class="navbar-item">
-            <a href="#courses" class="navbar-link" data-nav-link>Courses</a>
-          </li>
-
-          <li class="navbar-item">
-            <a href="#blog" class="navbar-link" data-nav-link>Blog</a>
-          </li>
-
-          <li class="navbar-item">
-            <a href="#" class="navbar-link" data-nav-link>Contact</a>
-          </li>
-
-        </ul>
-
-      </nav>
-
-      <div class="header-actions">
-
-        <button class="header-action-btn" aria-label="toggle search" title="Search">
-          <ion-icon name="search-outline" aria-hidden="true"></ion-icon>
+<header class="header" data-header>
+  <div class="container">
+    <img src="./assets/images/learnopia.png" width="162" height="50" alt="EduWeb logo">
+    <nav class="navbar" data-navbar>
+      <div class="wrapper">
+        <img src="./assets/images/learnopia.png" width="162" height="50" alt="EduWeb logo">
+        <button class="nav-close-btn" aria-label="close menu" data-nav-toggler>
+          <ion-icon name="close-outline" aria-hidden="true"></ion-icon>
         </button>
-
-        <a href="login.php" class="btn has-before">
-          <span class="span">Try for free</span>
-
-          <ion-icon name="arrow-forward-outline" aria-hidden="true"></ion-icon>
-        </a>
-
-        <button class="header-action-btn" aria-label="open menu" data-nav-toggler>
-          <ion-icon name="menu-outline" aria-hidden="true"></ion-icon>
-        </button>
-
       </div>
-
-      <div class="overlay" data-nav-toggler data-overlay></div>
-
+      <ul class="navbar-list">
+        <li class="navbar-item">
+          <a href="#home" class="navbar-link" data-nav-link>Home</a>
+        </li>
+        <li class="navbar-item">
+          <a href="#courses" class="navbar-link" data-nav-link>Courses</a>
+        </li>
+        <li class="navbar-item">
+          <a href="#blog" class="navbar-link" data-nav-link>Blog</a>
+        </li>
+        <li class="navbar-item">
+          <a href="#" class="navbar-link" data-nav-link>Contact</a>
+        </li>
+        <!-- an if-else condition to display different navbar definding on the user -->
+        <li class="navbar-item dropdown">
+          <?php
+            if (isset($_SESSION['username']) && $_SESSION['isAdmin'] == 1) {
+              echo "<a href='admin.php' class=\"navbar-link\">Admin</a>";
+              echo "<ul class=\"dropdown-content\">";
+              echo "<li><a href='add.php'>Add Course</a></li>";
+              echo "<div class=\"dropdown-divider\"></div>";
+              echo "<li><form method='post' action=''><button type='submit' name='logout'>Logout</button></form></li>";
+              echo "<script> function logout() { var confirmLogout = confirm('Are you sure you want to logout?'); 
+                if (confirmLogout) {window.location.href = 'index.php'; }}  </script>";
+            } else if (isset($_SESSION['username']) && $_SESSION['isAdmin'] == 0) {
+              echo "<a href='#' class=\"navbar-link\">Profile</a>";
+              echo "<ul class=\"dropdown-content\">";
+              echo "<li><a href='reset.php'>Change Password</a></li>";
+              echo "<div class=\"dropdown-divider\"></div>";
+              echo "<li><form method='post' action=''><button type='submit' name='logout'>Logout</button></form></li>";
+              echo "</ul>";
+              echo "<script> function logout() { var confirmLogout = confirm('Are you sure you want to logout?'); 
+                if (confirmLogout) {window.location.href = 'index.php'; }}  </script>";
+            }
+          ?>
+        </li>
+      </ul>
+    </nav>
+    <!-- an array that display navbar if there are no user loged in -->
+    <?php
+      if (!isset($_SESSION['username']) || empty($_SESSION['username'])) {
+    ?>
+    <div class="header-actions"></div>
+      <a href="login.php" class="btn has-before">
+        <span class="span">Try for free</span>
+        <ion-icon name="arrow-forward-outline" aria-hidden="true"></ion-icon>
+      </a>
     </div>
-  </header>
+    <?php
+      }
+    ?>
+    <div class="overlay" data-nav-toggler data-overlay></div>
+  </div>
+</header>
+
 
 
   <main>
     <article>
 
       <!-- 
-        - #HERO
+        - #HOME
       -->
 
       <section class="section hero has-bg-image" id="home" aria-label="home" >
@@ -115,7 +135,6 @@
             </a>
 
           </div>
-
           <figure class="hero-banner">
 
             <div class="img-holder one" style="--width: 270; --height: 300;">
@@ -125,7 +144,6 @@
             <div class="img-holder two" style="--width: 240; --height: 370;">
               <img src="./assets/images/hero-banner-2.jpg" width="240" height="370" alt="hero banner" class="img-cover">
             </div>
-
             <img src="./assets/images/hero-shape-1.svg" width="380" height="190" alt="" class="shape hero-shape-1">
 
             <img src="./assets/images/hero-shape-2.png" width="622" height="551" alt="" class="shape hero-shape-2">
@@ -139,9 +157,11 @@
       <!-- 
         - #COURSE
       -->
-
+      
+<!-- an array that display in website -->
       <section class="section course" id="courses" aria-label="course">
         <div class="container">
+          <!-- inputing a connection where the query will get -->
           <?php
           include 'connection.php';
           ?>
@@ -168,7 +188,6 @@
 
 
                 <div class="card-content">
-
                   <?php
                     $query = "SELECT * FROM `data` WHERE id=1";
                     $result = mysqli_query($conn, $query); 
@@ -176,17 +195,14 @@
                       echo "<span class=\"badge\">" . $row['level'] . "</span>";
                     } 
                     ?>
-                  <!-- <span class="badge">Beginner</span> -->
                   <?php
-                      $query = "SELECT * FROM `data` WHERE id=1";
-                      $result = mysqli_query($conn, $query); 
-                      while ($row = mysqli_fetch_array($result)) {
-                        echo '<h3 class="h3"><a href="#" class="card-title">' . $row['course'] . ' </a></h3>';
-                      } 
-                      ?>
-                  <!-- <h3 class="h3">
-                    <a href="#" class="card-title">Build Responsive Real- World Websites with HTML and CSS</a>
-                  </h3> -->
+                    $query = "SELECT * FROM `data` WHERE id=1";
+                    $result = mysqli_query($conn, $query); 
+                    while ($row = mysqli_fetch_array($result)) {
+                      echo '<h3 class="h3"><a href="#" class="card-title">' . $row['course'] . ' </a></h3>';
+                    } 
+                  ?>
+
                   <div class="wrapper">
 
                   <div class="rating-wrapper">
@@ -200,7 +216,6 @@
                     <p class="rating-text">(5.0 /9 Rating)</p>
 
                   </div>
-
                   <?php
                     $query = "SELECT * FROM `data` WHERE id=1";
                     $result = mysqli_query($conn, $query); 
@@ -208,13 +223,7 @@
                       echo "<data class=\"price\" style=\"color: red;\"> ₱" . $row['price'] . ".00</data>";
                     } 
                   ?>
-
-
-
-                  <!-- <data class="price" value="29">$29.00</data> -->
-
                   <ul class="card-meta-list">
-
                   <li class="card-meta-item">
                     <ion-icon name="library-outline" aria-hidden="true"></ion-icon>
                     <?php
@@ -225,19 +234,16 @@
                       } 
                     ?>
                   </li>
-
-                    <li class="card-meta-item">
-                      <ion-icon name="people-outline" aria-hidden="true"></ion-icon>
-                      <?php
+                  <li class="card-meta-item">
+                    <ion-icon name="people-outline" aria-hidden="true"></ion-icon>
+                    <?php
                       $query = "SELECT * FROM `data` WHERE id=1";
-                      $result = mysqli_query($conn, $query); // Corrected variable name from $sql to $query
+                      $result = mysqli_query($conn, $query); 
                       while ($row = mysqli_fetch_array($result)) {
                         echo "<span class=\"span\">" . $row['students'] . " Students</span>";
                       } 
-                      ?>
-
-                      <!-- <span class="span">20 Students</span> -->
-                    </li>
+                    ?>
+                  </li>
 
                   </ul>
 
@@ -258,45 +264,66 @@
               </div>
 
               <div class="card-content">
+                  <?php
+                    $query = "SELECT * FROM `data` WHERE id=2";
+                    $result = mysqli_query($conn, $query); 
+                    while ($row = mysqli_fetch_array($result)) {
+                      echo "<span class=\"badge\">" . $row['level'] . "</span>";
+                    } 
+                    ?>
+                  <?php
+                    $query = "SELECT * FROM `data` WHERE id=2";
+                    $result = mysqli_query($conn, $query); 
+                    while ($row = mysqli_fetch_array($result)) {
+                      echo '<h3 class="h3"><a href="#" class="card-title">' . $row['course'] . ' </a></h3>';
+                    } 
+                  ?>
 
-                <span class="badge">Intermediate</span>
-
-                <h3 class="h3">
-                  <a href="#" class="card-title">The Complete Camtasia Course for Content Creators</a>
-                </h3>
-
-                <div class="wrapper">
+                  <div class="wrapper">
 
                   <div class="rating-wrapper">
-                    <ion-icon name="star"></ion-icon>
-                    <ion-icon name="star"></ion-icon>
-                    <ion-icon name="star"></ion-icon>
-                    <ion-icon name="star"></ion-icon>
-                    <ion-icon name="star"></ion-icon>
+                      <ion-icon name="star"></ion-icon>
+                      <ion-icon name="star"></ion-icon>
+                      <ion-icon name="star"></ion-icon>
+                      <ion-icon name="star"></ion-icon>
+                      <ion-icon name="star"></ion-icon>
+                    </div>
+
+                    <p class="rating-text">(5.0 /9 Rating)</p>
+
                   </div>
-
-                  <p class="rating-text">(4.9 /7 Rating)</p>
-
-                </div>
-
-                <data class="price" value="49" style="color: red;">₱35.00</data>
-                <ul class="card-meta-list">
-
+                  <?php
+                    $query = "SELECT * FROM `data` WHERE id=2";
+                    $result = mysqli_query($conn, $query); 
+                    while ($row = mysqli_fetch_array($result)) {
+                      echo "<data class=\"price\" style=\"color: red;\"> ₱" . $row['price'] . ".00</data>";
+                    } 
+                  ?>
+                  <ul class="card-meta-list">
                   <li class="card-meta-item">
                     <ion-icon name="library-outline" aria-hidden="true"></ion-icon>
-
-                    <span class="span">13 Lessons</span>
+                    <?php
+                      $query = "SELECT * FROM `data` WHERE id=2";
+                      $result = mysqli_query($conn, $query); 
+                      while ($row = mysqli_fetch_array($result)) {
+                        echo "<span class=\"span\">" . $row['lessons'] . " lesson</span>";
+                      } 
+                    ?>
                   </li>
-
                   <li class="card-meta-item">
                     <ion-icon name="people-outline" aria-hidden="true"></ion-icon>
-
-                    <span class="span">18 Students</span>
+                    <?php
+                      $query = "SELECT * FROM `data` WHERE id=2";
+                      $result = mysqli_query($conn, $query); 
+                      while ($row = mysqli_fetch_array($result)) {
+                        echo "<span class=\"span\">" . $row['students'] . " Students</span>";
+                      } 
+                    ?>
                   </li>
 
-                </ul>
+                  </ul>
 
-              </div>
+                </div>
 
               </div>
               </li>               
@@ -316,12 +343,20 @@
                 </div>
 
                 <div class="card-content">
-
-                  <span class="badge">Advanced</span>
-
-                  <h3 class="h3">
-                    <a href="#" class="card-title">Java Programming Masterclass for Software Developers</a>
-                  </h3>
+                  <?php
+                    $query = "SELECT * FROM `data` WHERE id=3";
+                    $result = mysqli_query($conn, $query); 
+                    while ($row = mysqli_fetch_array($result)) {
+                      echo "<span class=\"badge\">" . $row['level'] . "</span>";
+                    } 
+                    ?>
+                  <?php
+                    $query = "SELECT * FROM `data` WHERE id=3";
+                    $result = mysqli_query($conn, $query); 
+                    while ($row = mysqli_fetch_array($result)) {
+                      echo '<h3 class="h3"><a href="#" class="card-title">' . $row['course'] . ' </a></h3>';
+                    } 
+                  ?>
 
                   <div class="wrapper">
 
@@ -333,25 +368,37 @@
                       <ion-icon name="star"></ion-icon>
                     </div>
 
-                    <p class="rating-text">(4.5 /9 Rating)</p>
+                    <p class="rating-text">(5.0 /9 Rating)</p>
 
                   </div>
-
-                  <data class="price" value="49" style="color: red;">₱49.00</data>
-
+                  <?php
+                    $query = "SELECT * FROM `data` WHERE id=3";
+                    $result = mysqli_query($conn, $query); 
+                    while ($row = mysqli_fetch_array($result)) {
+                      echo "<data class=\"price\" style=\"color: red;\"> ₱" . $row['price'] . ".00</data>";
+                    } 
+                  ?>
                   <ul class="card-meta-list">
-
-                    <li class="card-meta-item">
-                      <ion-icon name="library-outline" aria-hidden="true"></ion-icon>
-
-                      <span class="span">15 Lessons</span>
-                    </li>
-
-                    <li class="card-meta-item">
-                      <ion-icon name="people-outline" aria-hidden="true"></ion-icon>
-
-                      <span class="span">35 Students</span>
-                    </li>
+                  <li class="card-meta-item">
+                    <ion-icon name="library-outline" aria-hidden="true"></ion-icon>
+                    <?php
+                      $query = "SELECT * FROM `data` WHERE id=3";
+                      $result = mysqli_query($conn, $query); 
+                      while ($row = mysqli_fetch_array($result)) {
+                        echo "<span class=\"span\">" . $row['lessons'] . " lesson</span>";
+                      } 
+                    ?>
+                  </li>
+                  <li class="card-meta-item">
+                    <ion-icon name="people-outline" aria-hidden="true"></ion-icon>
+                    <?php
+                      $query = "SELECT * FROM `data` WHERE id=3";
+                      $result = mysqli_query($conn, $query); 
+                      while ($row = mysqli_fetch_array($result)) {
+                        echo "<span class=\"span\">" . $row['students'] . " Students</span>";
+                      } 
+                    ?>
+                  </li>
 
                   </ul>
 

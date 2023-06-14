@@ -15,12 +15,11 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=League+Spartan:wght@400;500;600;700;800&family=Poppins:wght@400;500&display=swap" rel="stylesheet">
-
   <link rel="preload" as="image" href="./assets/images/hero-bg.svg">
   <link rel="preload" as="image" href="./assets/images/hero-banner-1.jpg">
   <link rel="preload" as="image" href="./assets/images/hero-banner-2.jpg">
   <link rel="preload" as="image" href="./assets/images/hero-shape-1.svg">
-  <link rel="preload" as="image" href="./assets/images/hero-shape-2.png">
+  <link rel="preload" as="image" href="./assets/images/hero-shape-2.png"> -->
 
 </head>
 
@@ -32,7 +31,7 @@
 
   <header class="header" data-header>
     <div class="container">
-      <img src="./assets/images/learnopia.png" width="190" height="70" alt="EduWeb logo">
+      <img src="./assets/images/learnopia.png" width="162" height="50" alt="EduWeb logo">
       <nav class="navbar" data-navbar>
         <div class="wrapper">
           <img src="./assets/images/learnopia.png" width="162" height="50" alt="EduWeb logo">
@@ -60,23 +59,24 @@
         </ul>
       </nav>
       <div class="header-actions">
-  <button class="header-action-btn" aria-label="open menu" data-nav-toggler>
-    <ion-icon name="menu-outline" aria-hidden="true"></ion-icon>
-  </button>
+      <button class="header-action-btn" aria-label="open menu" data-nav-toggler>
+        <ion-icon name="menu-outline" aria-hidden="true"></ion-icon>
+      </button>
 </div>
 <div class="overlay" data-nav-toggler data-overlay></div>
 </div>
 </header>
 
+<!-- CRUD functions in admin page -->
 <div class="admin-container">
-    <div class="admin-content" style="padding: 20px;">
+  <div class="admin-content">
     <?php
     include ('connection.php');
 
     $originalValues = array();
 
     if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-      // Delete news function
+      // Delete courses function
       if (isset($_POST['delete'])) {
         $id = $_POST['id'];
 
@@ -141,7 +141,7 @@
       }
     }
       
-
+// form where update, delete funcations
     $query = "SELECT * FROM `data`";
     $result = mysqli_query($conn, $query); 
 
@@ -169,9 +169,9 @@
           <br><br>
 
           <div style='display: flex; justify-content: flex-start; gap: 10px;'>
-        <button type='submit' name='undo' style='border: 1px solid gray; background-color: #f2f2f2; color: black;'>Undo</button>
-        <button type='submit' name='update' style='border: 1px solid gray; background-color: #4CAF50; color: white;'>Save</button>
-        <button type='submit' name='delete' style='border: 1px solid gray; background-color: #f44336; color: white;'>Delete</button>
+        <button class='btn_undo'type='submit' name='undo' >Undo</button>
+        <button class='btn_save'type='submit' name='update'>Save</button>
+        <button class='btn_del'type='submit' name='delete' >Delete</button>
         <input type='hidden' name='id' value='".$row['id']."'>
       </div>
 

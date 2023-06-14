@@ -300,11 +300,6 @@ body {
   margin-block: 15px 25px;
 }
 
-/* .grid-list {
-  display: grid;
-  gap: 30px;
-} */
-
 .stats-card { background-color: hsla(var(--color), 0.1); }
 
 :is(.course, .blog) .section-title { margin-block-end: 40px; }
@@ -490,28 +485,31 @@ body {
   position: absolute;
   background-color: #f9f9f9;
   min-width: 160px;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-  z-index: 1;
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+  padding: 10px;
+  z-index: 9999;
+  max-height: 200px; 
+  overflow-y: auto; 
 }
 
-.dropdown-item {
-  padding: 12px 16px;
+.dropdown-content a {
+  color: #333;
   text-decoration: none;
   display: block;
-  color: #333;
+  padding: 5px 0;
+}
+
+.dropdown-content a:hover {
+  background-color: #ddd;
 }
 
 .dropdown-divider {
   border-top: 1px solid #ccc;
-  margin: 4px 0;
-} 
-
-.dropdown:hover .dropdown-content {
-  display: block;
+  margin: 5px 0;
 }
 
-.dropdown-content li {
-  padding: 4px 16px;
+.navbar-item.dropdown:hover .dropdown-content {
+  display: block;
 }
 
 
@@ -1015,9 +1013,6 @@ body {
   .newsletter-form .btn { min-width: max-content; }
 
 }
-
-
-
 
 
 /**

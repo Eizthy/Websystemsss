@@ -62,7 +62,7 @@ session_start();
           <li class="navbar-item dropdown">
             <a href="#" class="navbar-link">Admin</a>
             <ul class="dropdown-content">
-              <li><a href="reset.php">Change Password</a></li>
+              <li><a href="admin.php">Edit Course</a></li>
               <li><a href="index.php">Logout</a></li>
             </ul>
           </li>
@@ -80,6 +80,8 @@ session_start();
 <div class="admin-container">
     <div class="admin-content" style="padding: 20px;">
 <div style="padding: 20px;">
+
+<!-- adding course in the database -->
 <?php
 include 'connection.php';
 
@@ -96,14 +98,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     if ($result) {
       echo '<script> alert("Successfully saved the data."); window.location.href = "admin.php"; </script>';
-      exit; // Add this line to prevent further execution of the code after redirection
+      exit; // preventing further execution of the code after redirection
     } else {
       echo '<script> alert("Error saving the data."); </script>';
     }
   }
 }
 ?>
-
+<!-- form of adding courses -->
 <form method="POST">
   <label for="level">Level:</label>
   <select id="level" name="level" style="font-size: 15px;">
