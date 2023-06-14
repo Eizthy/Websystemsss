@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 13, 2023 at 07:34 AM
+-- Generation Time: Jun 14, 2023 at 09:27 PM
 -- Server version: 10.4.24-MariaDB
 -- PHP Version: 8.1.6
 
@@ -41,7 +41,9 @@ CREATE TABLE `data` (
 --
 
 INSERT INTO `data` (`id`, `level`, `course`, `price`, `lessons`, `students`) VALUES
-(1, 'Beginner', 'Build Responsive', '29', '8', '25');
+(1, 'Beginner', 'Build Responsive Website', '15', '5', '30'),
+(2, 'Intermediate', 'Java Programming Master', '25', '10', '35'),
+(3, 'advanced', 'Software Engineering', '35', '15', '23');
 
 -- --------------------------------------------------------
 
@@ -54,16 +56,17 @@ CREATE TABLE `tbl_user` (
   `name` varchar(50) NOT NULL,
   `username` varchar(50) NOT NULL,
   `password` varchar(50) NOT NULL,
-  `usertype` varchar(5) NOT NULL DEFAULT 'user'
+  `isAdmin` tinyint(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `tbl_user`
 --
 
-INSERT INTO `tbl_user` (`id`, `name`, `username`, `password`, `usertype`) VALUES
-(1, 'test', 'test1@gmail.com', '81dc9bdb52d04dc20036dbd8313ed055', 'user'),
-(2, 'admin', 'admin@gmail.com', 'e3274be5c857fb42ab72d786e281b4b8', 'admin');
+INSERT INTO `tbl_user` (`id`, `name`, `username`, `password`, `isAdmin`) VALUES
+(12, 'test1', 'test1@gmail.com', '81dc9bdb52d04dc20036dbd8313ed055', 0),
+(13, 'admin', 'admin@gmail.com', '962012d09b8170d912f0669f6d7d9d07', 1),
+(14, 'last', 'last@gmail.com', '5a90d2dde2355447e668cdc722cad314', 0);
 
 --
 -- Indexes for dumped tables
@@ -89,13 +92,13 @@ ALTER TABLE `tbl_user`
 -- AUTO_INCREMENT for table `data`
 --
 ALTER TABLE `data`
-  MODIFY `id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `tbl_user`
 --
 ALTER TABLE `tbl_user`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

@@ -116,16 +116,16 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
   </select>
   <br><br>
   <label for="CourseTitle" style="display: inline-block; margin-right: 10px;">Course Title:</label>
-  <input type="text" id="CourseTitle" name="CourseTitle" value="" style="width: 300px; border: 1px solid #ccc; display: inline-block;">
+  <input type="text" id="CourseTitle" name="CourseTitle" value="" style="width: 300px; border: 1px solid #ccc; display: inline-block;" require>
   <br><br>
   <label for="price" style="display: inline-block; margin-right: 10px;">Price:</label>
-  <input type="text" id="price" name="price" value="" style="width: 300px; border: 1px solid #ccc; display: inline-block;">
+  <input type="text" id="price" name="price" value="" style="width: 300px; border: 1px solid #ccc; display: inline-block;" require>
   <br><br>
   <label for="lessons" style="display: inline-block; margin-right: 10px;">Lesson:</label>
-  <input type="text" id="lessons" name="lessons" value="" style="width: 300px; border: 1px solid #ccc; display: inline-block;">
+  <input type="text" id="lessons" name="lessons" value="" style="width: 300px; border: 1px solid #ccc; display: inline-block;" require>
   <br><br>
   <label for="students" style="display: inline-block; margin-right: 10px;">Student:</label>
-  <input type="text" id="students" name="students" value="" style="width: 300px; border: 1px solid #ccc; display: inline-block;">
+  <input type="text" id="students" name="students" value="" style="width: 300px; border: 1px solid #ccc; display: inline-block;" require>
   <br><br>
 
   <div style="display: flex; justify-content: flex-start; gap: 10px;">

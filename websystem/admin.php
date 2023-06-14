@@ -16,10 +16,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=League+Spartan:wght@400;500;600;700;800&family=Poppins:wght@400;500&display=swap" rel="stylesheet">
   <link rel="preload" as="image" href="./assets/images/hero-bg.svg">
-  <link rel="preload" as="image" href="./assets/images/hero-banner-1.jpg">
-  <link rel="preload" as="image" href="./assets/images/hero-banner-2.jpg">
-  <link rel="preload" as="image" href="./assets/images/hero-shape-1.svg">
-  <link rel="preload" as="image" href="./assets/images/hero-shape-2.png"> -->
+
 
 </head>
 
@@ -41,10 +38,10 @@
         </div>
         <ul class="navbar-list">
           <li class="navbar-item">
-            <a href="#home" class="navbar-link" data-nav-link>Home</a>
+            <a href="#" class="navbar-link" data-nav-link>Home</a>
           </li>
           <li class="navbar-item">
-            <a href="#courses" class="navbar-link" data-nav-link>Courses</a>
+            <a href="#" class="navbar-link" data-nav-link>Courses</a>
           </li>
           <li class="navbar-item">
             <a href="#" class="navbar-link" data-nav-link>Contact</a>
@@ -146,7 +143,7 @@
     $result = mysqli_query($conn, $query); 
 
     while ($row = mysqli_fetch_array($result)) {
-      echo "<form method='POST' action='admin.php'> <!-- Update the action attribute to point to 'admin.php' -->
+      echo "<form method='POST' action='admin.php'> 
           <label for='level'>Level:</label>
           <select id='level' name='level' style='font-size: 15px;'>
             <option value='". $row['level']. "'>" . $row['level'] . "</option>
@@ -156,16 +153,16 @@
           </select>
           <br><br>
           <label for='CourseTitle' style='display: inline-block; margin-right: 10px;'>Course Title:</label>
-          <input type='text' id='CourseTitle' name='course' value='".$row['course']."' style='width: 300px; border: 1px solid #ccc; display: inline-block;'>
+          <input type='text' id='CourseTitle' name='course' value='".$row['course']."' style='width: 300px; border: 1px solid #ccc; display: inline-block;' require>
           <br><br>
           <label for='price' style='display: inline-block; margin-right: 10px;'>Price:</label>
-          <input type='text' id='price' name='price' value='".$row['price']."' style='width: 300px; border: 1px solid #ccc; display: inline-block;'>
+          <input type='text' id='price' name='price' value='".$row['price']."' style='width: 300px; border: 1px solid #ccc; display: inline-block;' require>
           <br><br>
           <label for='lessons' style='display: inline-block; margin-right: 10px;'>Lesson:</label>
-          <input type='text' id='lessons' name='lessons' value='".$row['lessons']."' style='width: 300px; border: 1px solid #ccc; display: inline-block;'>
+          <input type='text' id='lessons' name='lessons' value='".$row['lessons']."' style='width: 300px; border: 1px solid #ccc; display: inline-block;' require>
           <br><br>
           <label for='students' style='display: inline-block; margin-right: 10px;'>Student:</label>
-          <input type='text' id='students' name='students' value='".$row['students']."' style='width: 300px; border: 1px solid #ccc; display: inline-block;'>
+          <input type='text' id='students' name='students' value='".$row['students']."' style='width: 300px; border: 1px solid #ccc; display: inline-block;' require>
           <br><br>
 
           <div style='display: flex; justify-content: flex-start; gap: 10px;'>
@@ -189,6 +186,7 @@
   <footer>
     <?php include 'footer.php'; ?>
   </footer>
+
   <!-- 
     - #BACK TO TOP
   -->

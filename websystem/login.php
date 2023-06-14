@@ -86,7 +86,7 @@ session_start();
                                     
                                     $_SESSION['username'] = $Username;
                                     $_SESSION['isAdmin'] = $userLevel;
-                                    header('Location: index.php');
+                                    header('Location: admin.php');
                                     exit;
                                 } else {
                                     echo "<script>alert('Invalid password.');</script>";
