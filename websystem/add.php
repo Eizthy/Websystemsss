@@ -76,63 +76,60 @@ session_start();
 </header>
 
 <div style="padding: 20px;">
-
 <?php
 include 'connection.php';
 
-  echo "<form>
-      <label for='level'>Level:</label>
-      <select id='level' name='level' style='font-size: 15px;'>
-      <option value=''></option>
-        <option value='beginner'>Beginner</option>
-        <option value=intermediate'>Intermediate</option>
-        <option value='advanced'>Advanced</option>
-      </select>
-      <br><br>
-      <label for='CourseTitle' style='display: inline-block; margin-right: 10px;'>Course Title:</label>
-      <input type='text' id='CourseTitle name='CourseTitle' value='' style='width: 300px; border: 1px solid #ccc; display: inline-block;'>
-      <br><br>
-      <label for='students' style='display: inline-block; margin-right: 10px;'>Price:</label>
-      <input type='text' id='students' name='students' value='' style='width: 300px; border: 1px solid #ccc; display: inline-block;'>
-      <br><br>
-      <label for='students' style='display: inline-block; margin-right: 10px;'>Lesson:</label>
-      <input type='text' id='students' name='students' value='' style='width: 300px; border: 1px solid #ccc; display: inline-block;'>
-      <br><br>
-      <label for='students' style='display: inline-block; margin-right: 10px;'>Student:</label>
-      <input type='text' id='students' name='students' value='' style='width: 300px; border: 1px solid #ccc; display: inline-block;'>
-      <br><br>
-
-      <div style='display: flex; justify-content: flex-start; gap: 10px;'>
-        <button type='submit' style='border: 1px solid gray;'>Save</button>
-      </div>
-
-  </form>";
-?>
-<!-- Insert news to database script -->
-<?php
-include 'connection.php';
-if ($conn && isset($_POST['submit'])) {
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+  if (isset($_POST['submit'])) {
     $level = $_POST['level'];
-    $course = $_POST['course'];
+    $course = $_POST['CourseTitle'];
     $price = $_POST['price'];
     $lessons = $_POST['lessons'];
     $students = $_POST['students'];
 
     $query = "INSERT INTO `data` (`level`, `course`, `price`, `lessons`, `students`) VALUES ('$level', '$course', '$price', '$lessons', '$students')";
-    $result=mysqli_query($conn,$sql);
-      if($result){ 
-      header('location:index.php');
-      echo"<script>alert('New User Register Success');</script>";   
-      }else{
-          die(mysqli_error($conn)) ;
-      }
+    $result = mysqli_query($conn, $query);
+
+    if ($result) {
+      echo '<script> alert("Successfully saved the data."); window.location.href = "admin.php"; </script>';
+      exit; // Add this line to prevent further execution of the code after redirection
+    } else {
+      echo '<script> alert("Error saving the data."); </script>';
+    }
+  }
 }
-
-
-mysqli_close($conn);
 ?>
 
+<form method="POST">
+  <label for="level">Level:</label>
+  <select id="level" name="level" style="font-size: 15px;">
+    <option value=""></option>
+    <option value="beginner">Beginner</option>
+    <option value="intermediate">Intermediate</option>
+    <option value="advanced">Advanced</option>
+  </select>
+  <br><br>
+  <label for="CourseTitle" style="display: inline-block; margin-right: 10px;">Course Title:</label>
+  <input type="text" id="CourseTitle" name="CourseTitle" value="" style="width: 300px; border: 1px solid #ccc; display: inline-block;">
+  <br><br>
+  <label for="price" style="display: inline-block; margin-right: 10px;">Price:</label>
+  <input type="text" id="price" name="price" value="" style="width: 300px; border: 1px solid #ccc; display: inline-block;">
+  <br><br>
+  <label for="lessons" style="display: inline-block; margin-right: 10px;">Lesson:</label>
+  <input type="text" id="lessons" name="lessons" value="" style="width: 300px; border: 1px solid #ccc; display: inline-block;">
+  <br><br>
+  <label for="students" style="display: inline-block; margin-right: 10px;">Student:</label>
+  <input type="text" id="students" name="students" value="" style="width: 300px; border: 1px solid #ccc; display: inline-block;">
+  <br><br>
+
+  <div style="display: flex; justify-content: flex-start; gap: 10px;">
+    <button type="submit" name="submit" style="border: 1px solid gray;">Save</button>
+  </div>
+</form>
 </div>
+
+
+
 
   <footer>
     <?php include 'footer.php'; ?>

@@ -70,22 +70,23 @@
 <?php
 include ('connection.php');
 
+$originalValues = array();
+
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
   // Delete news function
   if (isset($_POST['delete'])) {
     $id = $_POST['id'];
-    echo '
-    <script>
-      var confirmed = confirm("Are you sure you want to delete this?");
-      if (confirmed) {
-        // Delete the news
-        window.location.href = "delete-news.php?id=' . $id . '";
-      } else {
-      }
-    </script>';
-  } 
 
-  // Update news function
+    // Update the database values to 'N/A'
+    $sql = "UPDATE `data` SET level='N/A', course='N/A', price='N/A', lessons='N/A', students='N/A' WHERE id=$id";
+    $result = mysqli_query($conn, $sql) or die('Error querying database.');
+
+    if ($result) {
+      echo '<script> alert("Successfully deleted the data."); window.location.href = "admin.php"; </script>';
+    }
+  }
+
+  // Update or insert data function
   if (isset($_POST['update'])) {
     $level = $_POST['level'];
     $course = $_POST['course'];
@@ -93,15 +94,50 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $lessons = $_POST['lessons'];
     $students = $_POST['students'];
     $id = $_POST['id'];
-    
-    $sql = "UPDATE `data` SET level='$level', course='$course', price='$price', lessons='$lessons', students='$students' WHERE id=$id";
+
+    if ($id != '') {
+      // Update existing data
+      $query = "SELECT * FROM `data` WHERE id=$id";
+      $result = mysqli_query($conn, $query);
+      $row = mysqli_fetch_array($result);
+      $originalValues[$id] = $row;
+
+      $sql = "UPDATE `data` SET level='$level', course='$course', price='$price', lessons='$lessons', students='$students' WHERE id=$id";
+    } else {
+      // Insert new data
+      $sql = "INSERT INTO `data` (level, course, price, lessons, students) VALUES ('$level', '$course', '$price', '$lessons', '$students')";
+    }
+
     $result = mysqli_query($conn, $sql) or die('Error querying database.');
-    
+
     if ($result) {
-      echo '<script> alert("Successfully updated the news."); window.location.href = "admin.php"; </script>';
+      if ($id != '') {
+        echo '<script> alert("Successfully updated the data."); window.location.href = "admin.php"; </script>';
+      } else {
+        echo '<script> alert("Successfully inserted new data."); window.location.href = "admin.php"; </script>';
+      }
     }
   }
 }
+
+if (isset($_POST['undo'])) {
+  $id = $_POST['id'];
+
+  // Check if original values exist for the given ID
+  if (isset($originalValues[$id])) {
+    // Retrieve the original values
+    $originalRow = $originalValues[$id];
+
+    // Update the database with the original values
+    $sql = "UPDATE `data` SET level='" . $originalRow['level'] . "', course='" . $originalRow['course'] . "', price='" . $originalRow['price'] . "', lessons='" . $originalRow['lessons'] . "', students='" . $originalRow['students'] . "' WHERE id=$id";
+    $result = mysqli_query($conn, $sql) or die('Error querying database.');
+
+    if ($result) {
+      echo '<script> alert("Changes undone."); window.location.href = "admin.php"; </script>';
+    }
+  }
+}
+  
 
 $query = "SELECT * FROM `data`";
 $result = mysqli_query($conn, $query); 
@@ -130,7 +166,7 @@ while ($row = mysqli_fetch_array($result)) {
       <br><br>
 
       <div style='display: flex; justify-content: flex-start; gap: 10px;'>
-        <button type='button' style='border: 1px solid gray;'>Undo</button>
+        <button type='submit' name='undo' style='border: 1px solid gray;'>Undo</button>
         <button type='submit' name='update' style='border: 1px solid gray;'>Save</button>
         <button type='submit' name='delete' style='border: 1px solid gray;'>Delete</button>
         <input type='hidden' name='id' value='".$row['id']."'>
@@ -139,6 +175,8 @@ while ($row = mysqli_fetch_array($result)) {
   </form>";
 }
 ?>
+</div>
+
 
 </div>
 
