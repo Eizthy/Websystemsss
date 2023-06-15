@@ -338,14 +338,14 @@ session_start(); // Start the session
 
                 <div class="card-content">
                   <?php
-                    $query = "SELECT * FROM `data` WHERE id=3";
+                    $query = "SELECT * FROM `data` WHERE id=5";
                     $result = mysqli_query($conn, $query); 
                     while ($row = mysqli_fetch_array($result)) {
                       echo "<span class=\"badge\">" . $row['level'] . "</span>";
                     } 
                     ?>
                   <?php
-                    $query = "SELECT * FROM `data` WHERE id=3";
+                    $query = "SELECT * FROM `data` WHERE id=5";
                     $result = mysqli_query($conn, $query); 
                     while ($row = mysqli_fetch_array($result)) {
                       echo '<h3 class="h3"><a href="#" class="card-title">' . $row['course'] . ' </a></h3>';
@@ -366,7 +366,7 @@ session_start(); // Start the session
 
                   </div>
                   <?php
-                    $query = "SELECT * FROM `data` WHERE id=3";
+                    $query = "SELECT * FROM `data` WHERE id=5";
                     $result = mysqli_query($conn, $query); 
                     while ($row = mysqli_fetch_array($result)) {
                       echo "<data class=\"price\" style=\"color: red;\"> ₱" . $row['price'] . ".00</data>";
@@ -376,7 +376,7 @@ session_start(); // Start the session
                   <li class="card-meta-item">
                     <ion-icon name="library-outline" aria-hidden="true"></ion-icon>
                     <?php
-                      $query = "SELECT * FROM `data` WHERE id=3";
+                      $query = "SELECT * FROM `data` WHERE id=5";
                       $result = mysqli_query($conn, $query); 
                       while ($row = mysqli_fetch_array($result)) {
                         echo "<span class=\"span\">" . $row['lessons'] . " lesson</span>";
@@ -386,7 +386,7 @@ session_start(); // Start the session
                   <li class="card-meta-item">
                     <ion-icon name="people-outline" aria-hidden="true"></ion-icon>
                     <?php
-                      $query = "SELECT * FROM `data` WHERE id=3";
+                      $query = "SELECT * FROM `data` WHERE id=5";
                       $result = mysqli_query($conn, $query); 
                       while ($row = mysqli_fetch_array($result)) {
                         echo "<span class=\"span\">" . $row['students'] . " Students</span>";

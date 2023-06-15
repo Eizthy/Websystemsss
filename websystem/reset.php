@@ -24,7 +24,7 @@
           <img src="./assets/images/login.png" class="img-fluid" alt="Phone image" height="300px" width="600px">
         </div>
         <div class="col-md-7 col-lg-5 col-xl-5 offset-xl-1">
-    <form action="resetpass.php" method="post">
+    <form action="reset.php" method="post">
         <p class="text-center h1 fw-bold mb-4 mx-1 mx-md-3 mt-3">Reset your password</p>
 
         <!-- Email input -->
@@ -84,7 +84,7 @@
           if ($updatePasswordResult) {
               echo "<script>alert('Password reset successful');</script>";
               // Redirect to the login page or any other page you desire
-              header('location: index.php');
+              header('location: login.php');
               exit;
           } else {
               echo "<script>alert('There was an error changing your password. Please try again.');</script>";
