@@ -78,16 +78,20 @@ session_start();
                                 mysqli_stmt_fetch($stmt);
                     
                                 if (md5($password) == $userPassword) {
-                                    if ($userLevel == 1) {
-                                        $admin = true;
-                                    } else {
-                                        $admin = false;
-                                    }
-                                    
                                     $_SESSION['username'] = $Username;
                                     $_SESSION['isAdmin'] = $userLevel;
-                                    header('Location: admin.php');
-                                    exit;
+                                    if ($userLevel == 1) {
+                                        $admin = true;
+                                        header('Location: admin.php');
+                                        exit;
+                                    } else {
+                                        $admin = false;
+                                        header('Location: index.php');
+                                        exit;
+                                    }
+                                    
+                                    
+                                    
                                 } else {
                                     echo "<script>alert('Invalid password.');</script>";
                                     header('Location: login.php');

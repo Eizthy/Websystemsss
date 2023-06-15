@@ -50,6 +50,26 @@
                     </div>
                   </form>
                   <p align="center">I have already account. <a href="login.php" class="text-warning" style="font-weight:600; text-decoration:none;">Login.</a></p>
+                  <?php
+                  include ('connection.php');
+
+                  if(isset($_POST['register']))
+                  {
+                      $name=$_POST['name'];
+                      $username=$_POST['username'];
+                      $pass=md5($_POST['password']);
+                      $isAdmin = 0;
+
+                      $sql   ="INSERT INTO `tbl_user`(`name`, `username`, `password`, `isAdmin`) VALUES ('$name','$username','$pass', '$isAdmin')";
+                      $result=mysqli_query($conn,$sql);
+                      if($result){ 
+                      header('location:index.php');
+                      echo"<script>alert('New User Register Success');</script>";   
+                      }else{
+                          die(mysqli_error($conn)) ;
+                      }
+                    }
+                  ?>
                 </div>
                 <div class="col-md-10 col-lg-6 col-xl-7 d-flex align-items-center order-1 order-lg-2">
                   <img src="./assets/images/signup.png" class="img-fluid" alt="Sample image" height="300px" width="500px">
@@ -62,26 +82,7 @@
     </div>
   </section>
 
-  <?php
-  include ('connection.php');
-
-  if(isset($_POST['register']))
-  {
-      $name=$_POST['name'];
-      $username=$_POST['username'];
-      $pass=md5($_POST['password']);
-      $isAdmin = 0;
-
-      $sql   ="INSERT INTO `tbl_user`(`name`, `username`, `password`, `isAdmin`) VALUES ('$name','$username','$pass', '$isAdmin')";
-      $result=mysqli_query($conn,$sql);
-      if($result){ 
-      header('location:index.php');
-      echo"<script>alert('New User Register Success');</script>";   
-      }else{
-          die(mysqli_error($conn)) ;
-      }
-    }
-  ?>
+  
 
   <!-- Bootstrap JavaScript Libraries -->
   <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous">

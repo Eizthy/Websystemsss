@@ -1,3 +1,6 @@
+<?php 
+session_start(); // Start the session
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -50,11 +53,23 @@
             <a href="#" class="navbar-link">Admin</a>
             <ul class="dropdown-content">
               <li><a href="add.php">Add Course</a></li>
-              <li><a href="index.php">Logout</a></li>
+              <li><a href="logout.php">Logout</a></li>
             </ul>
           </li>
         </ul>
       </nav>
+      <?php
+        if (!isset($_SESSION['username']) || empty($_SESSION['username'])) {
+      ?>
+      <div class="header-actions"></div>
+        <!-- <a href="login.php" class="btn has-before">
+          <span class="span">Try for free</span>
+          <ion-icon name="arrow-forward-outline" aria-hidden="true"></ion-icon>
+        </a> -->
+      </div>
+      <?php
+        }
+      ?>
       <div class="header-actions">
       <button class="header-action-btn" aria-label="open menu" data-nav-toggler>
         <ion-icon name="menu-outline" aria-hidden="true"></ion-icon>

@@ -84,7 +84,7 @@
           if ($updatePasswordResult) {
               echo "<script>alert('Password reset successful');</script>";
               // Redirect to the login page or any other page you desire
-              header('location: index1.php');
+              header('location: index.php');
               exit;
           } else {
               echo "<script>alert('There was an error changing your password. Please try again.');</script>";
